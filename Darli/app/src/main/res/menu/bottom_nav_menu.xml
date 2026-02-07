@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menuFragment"
+        android:icon="@drawable/ic_home"
+        android:title="Beranda" />
+    <item
+        android:id="@+id/alumniFragment"
+        android:icon="@drawable/ic_people"
+        android:title="Jaringan" />
+    <item
+        android:id="@+id/lowonganFragment"
+        android:icon="@drawable/ic_briefcase"
+        android:title="Lowongan" />
+    <item
+        android:id="@+id/eventFragment"
+        android:icon="@drawable/ic_calendar"
+        android:title="Acara" />
+    <item
+        android:id="@+id/akunFragment"
+        android:icon="@drawable/ic_person"
+        android:title="Akun" />
+</menu>

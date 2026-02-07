@@ -1,0 +1,34 @@
+<?php
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApiController;
+
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| is assigned the "api" middleware group. Enjoy building your API!
+|
+*/
+
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+Route::post('login',[ApiController::class, 'login']);
+Route::post('update_profile',[ApiController::class, 'update_profile']);
+Route::get('alumni/dashboard',[ApiController::class, 'alumni'])->name('alumni.dashboard');
+Route::get('get_comments',[ApiController::class, 'getComments']);
+Route::post('store_comment',[ApiController::class, 'storeComment']);
+Route::post('delete_comment',[ApiController::class, 'deleteComment']);
+Route::get('get_stats',[ApiController::class, 'getStats']);
+Route::get('alumni/{id}',[ApiController::class, 'alumniDetail']);
+Route::get('info_pondok',[ApiController::class, 'getInfoPondok']);
+Route::get('get_galeri',[ApiController::class, 'getGaleri']);
+Route::get('events',[ApiController::class, 'getEvents']);
+Route::get('kontak_ustadz',[ApiController::class, 'getKontakUstadz']);
+Route::get('lowongan',[ApiController::class, 'getLowongan']);

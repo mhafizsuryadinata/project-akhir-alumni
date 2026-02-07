@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Web Dashboard Specific Palette (Base) -->
+    <color name="web_primary_blue">#1a73e8</color>
+    <color name="web_secondary_blue">#4285f4</color>
+    <color name="web_dark_blue">#1557b0</color>
+    <color name="web_white">#ffffff</color>
+    <color name="web_light_blue_base">#e3f2fd</color>
+    <color name="web_light_gray">#f8f9fa</color>
+    <color name="web_medium_gray">#e9ecef</color>
+    <color name="web_dark_gray">#6c757d</color>
+    <color name="web_danger">#dc3545</color>
+
+    <color name="blue_primary">#2196F3</color>
+    <color name="blue_light">#64B5F6</color>
+    <color name="blue_dark">#1976D2</color>
+    <color name="blue_accent">#03A9F4</color>
+    <color name="white">#FFFFFF</color>
+    <color name="light_gray">#F5F5F5</color>
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="card_background">#FFFFFF</color>
+    <color name="black">#160808</color>
+    <color name="background">#F5F5F5</color>
+    <color name="red">#F44336</color>
+    <color name="gray_primary">#94A3B8</color>
+    <color name="web_gradient_start">#1a2a6c</color>
+    <color name="web_gradient_center">#b21f1f</color>
+    <color name="web_gradient_end">#2575fc</color>
+    <color name="brand_primary">#137fec</color>
+    <color name="brand_secondary">#1a73e8</color>
+    <color name="background_light_ref">#f6f7f8</color>
+    <color name="background_dark_ref">#101922</color>
+    <color name="primary_ref">#137fec</color>
+    <color name="text_dark_ref">#111418</color>
+    
+
+    <color name="gradient_start">#2D5BFF</color>
+    <color name="gradient_end">#6C63FF</color>
+    <color name="white_opacity_15">#26FFFFFF</color>
+    <color name="white_opacity_50">#80FFFFFF</color>
+    <color name="white_opacity_80">#CCFFFFFF</color>
+    <color name="card_green">#00C9A7</color>
+    <color name="card_orange">#FF9671</color>
+    <color name="card_blue">#0089BA</color>
+    <color name="card_indigo">#2D5BFF</color>
+    <color name="light_green">#E3F9F1</color>
+    <color name="light_orange">#FFF2ED</color>
+    <color name="light_blue">#E3F2FD</color>
+    <color name="background_light">#F8F9FA</color>
+    <color name="gray_light">#E0E0E0</color>
+    <color name="gray_dark">#757575</color>
+    <color name="light_purple">#F3E5F5</color>
+    
+    <!-- Web Dashboard Colors & Gradients -->
+    <color name="web_primary">#2D5BFF</color>
+    <color name="web_secondary">#6C63FF</color>
+    <color name="web_accent">#00D2FF</color>
+    <color name="web_success">#00C9A7</color>
+    <color name="web_warning">#FFC75F</color>
+    <color name="web_light">#F8F9FA</color>
+    <color name="web_dark">#212529</color>
+    <color name="web_bg_light">#f5f7fa</color>
+    
+    <!-- Gradients (Approximated as solid colors for XML simplicity if not using shapes, 
+         but here defining base colors for gradient drawables) -->
+    <color name="gradient_primary_start">#2D5BFF</color>
+    <color name="gradient_primary_end">#6C63FF</color>
+    <color name="gradient_accent_start">#00D2FF</color>
+    <color name="gradient_accent_end">#6C63FF</color>
+
+    <!-- Specific Section Colors -->
+    <color name="text_hero_title">#FFFFFF</color>
+    <color name="text_section_title">#2D5BFF</color>
+    <color name="text_body">#333333</color>
+    <color name="text_muted">#6c757d</color>
+    
+    <!-- Legacy/Redesign Colors -->
+    <color name="blue_vision_bg">#2D9CDB</color>
+    <color name="stats_bg_icon_alumni">#E3F2FD</color>
+    <color name="stats_bg_icon_teacher">#F3E5F5</color>
+    <color name="stats_bg_icon_event">#E8F5E9</color>
+    <color name="stats_bg_icon_job">#FFF3E0</color>
+    <color name="text_dark_heading">#1F2937</color>
+    <color name="text_body_gray">#6B7280</color>
+    <color name="bg_education_item">#FFFFFF</color>
+    
+    <!-- Chip Colors -->
+    <color name="chip_blue_bg">#E0F2FE</color>
+</resources>

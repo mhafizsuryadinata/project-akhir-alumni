@@ -1,0 +1,115 @@
+Migrating: 2026_01_10_094822_create_contact_messages_table
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000]: General error: 1005 Can't create table `DARLI`.`contact_messages` (errno: 150 "Foreign key constraint is incorrectly formed") (SQL: alter table `contact_messages` add constraint `contact_messages_user_id_foreign` foreign key (`user_id`) references `users` (`id_user`) on delete cascade)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:712
+    708▕         // If an exception occurs when attempting to run a query, we'll format the error
+    709▕         // message to include the bindings with SQL, which will make this exception a
+    710▕         // lot more helpful to the developer instead of just the database's errors.
+    711▕         catch (Exception $e) {
+  ➜ 712▕             throw new QueryException(
+    713▕                 $query, $this->prepareBindings($bindings), $e
+    714▕             );
+    715▕         }
+    716▕     }
+
+  1   vendor/laravel/framework/src/Illuminate/Database/Connection.php:501
+      PDOException::("SQLSTATE[HY000]: General error: 1005 Can't create table `DARLI`.`contact_messages` (errno: 150 "Foreign key constraint is incorrectly formed")")
+
+  2   vendor/laravel/framework/src/Illuminate/Database/Connection.php:501
+      PDOStatement::execute()
+
+  3   vendor/laravel/framework/src/Illuminate/Database/Connection.php:705
+      Illuminate\Database\Connection::Illuminate\Database\{closure}()
+
+  4   vendor/laravel/framework/src/Illuminate/Database/Connection.php:672
+      Illuminate\Database\Connection::runQueryCallback()
+
+  5   vendor/laravel/framework/src/Illuminate/Database/Connection.php:490
+      Illuminate\Database\Connection::run()
+
+  6   vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php:109
+      Illuminate\Database\Connection::statement()
+
+  7   vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php:364
+      Illuminate\Database\Schema\Blueprint::build()
+
+  8   vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php:223
+      Illuminate\Database\Schema\Builder::build()
+
+  9   vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php:261
+      Illuminate\Database\Schema\Builder::create()
+
+  10  database/migrations/2026_01_10_094822_create_contact_messages_table.php:17
+      Illuminate\Support\Facades\Facade::__callStatic()
+
+  11  vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:472
+      CreateContactMessagesTable::up()
+
+  12  vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:394
+      Illuminate\Database\Migrations\Migrator::runMethod()
+
+  13  vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:403
+      Illuminate\Database\Migrations\Migrator::Illuminate\Database\Migrations\{closure}()
+
+  14  vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:202
+      Illuminate\Database\Migrations\Migrator::runMigration()
+
+  15  vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:167
+      Illuminate\Database\Migrations\Migrator::runUp()
+
+  16  vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:112
+      Illuminate\Database\Migrations\Migrator::runPending()
+
+  17  vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:84
+      Illuminate\Database\Migrations\Migrator::run()
+
+  18  vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php:606
+      Illuminate\Database\Console\Migrations\MigrateCommand::Illuminate\Database\Console\Migrations\{closure}()
+
+  19  vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:77
+      Illuminate\Database\Migrations\Migrator::usingConnection()
+
+  20  vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:36
+      Illuminate\Database\Console\Migrations\MigrateCommand::handle()
+
+  21  vendor/laravel/framework/src/Illuminate/Container/Util.php:40
+      Illuminate\Container\BoundMethod::Illuminate\Container\{closure}()
+
+  22  vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:93
+      Illuminate\Container\Util::unwrapIfClosure()
+
+  23  vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:35
+      Illuminate\Container\BoundMethod::callBoundMethod()
+
+  24  vendor/laravel/framework/src/Illuminate/Container/Container.php:653
+      Illuminate\Container\BoundMethod::call()
+
+  25  vendor/laravel/framework/src/Illuminate/Console/Command.php:136
+      Illuminate\Container\Container::call()
+
+  26  vendor/symfony/console/Command/Command.php:298
+      Illuminate\Console\Command::execute()
+
+  27  vendor/laravel/framework/src/Illuminate/Console/Command.php:120
+      Symfony\Component\Console\Command\Command::run()
+
+  28  vendor/symfony/console/Application.php:1040
+      Illuminate\Console\Command::run()
+
+  29  vendor/symfony/console/Application.php:301
+      Symfony\Component\Console\Application::doRunCommand()
+
+  30  vendor/symfony/console/Application.php:171
+      Symfony\Component\Console\Application::doRun()
+
+  31  vendor/laravel/framework/src/Illuminate/Console/Application.php:94
+      Symfony\Component\Console\Application::run()
+
+  32  vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:129
+      Illuminate\Console\Application::run()
+
+  33  artisan:35
+      Illuminate\Foundation\Console\Kernel::handle()

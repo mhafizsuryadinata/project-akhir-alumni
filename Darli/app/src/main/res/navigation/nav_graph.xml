@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/menuFragment">
+
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.darli.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.example.darli.MenuFragment"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" />
+
+    <fragment
+        android:id="@+id/akunFragment"
+        android:name="com.example.darli.AkunFragment"
+        android:label="AkunFragment" />
+
+    <fragment
+        android:id="@+id/alumniFragment"
+        android:name="com.example.darli.AlumniFragment"
+        android:label="fragment_alumni"
+        tools:layout="@layout/fragment_alumni" />
+
+    <fragment
+        android:id="@+id/eventFragment"
+        android:name="com.example.darli.EventFragment"
+        android:label="EventFragment" />
+
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.example.darli.InfoFragment"
+        android:label="InfoFragment" />
+
+    <fragment
+        android:id="@+id/kontakUstadzFragment"
+        android:name="com.example.darli.KontakUstadzFragment"
+        android:label="KontakUstadzFragment" />
+
+    <fragment
+        android:id="@+id/lowonganFragment"
+        android:name="com.example.darli.LowonganFragment"
+        android:label="LowonganFragment" />
+
+    <fragment
+        android:id="@+id/galleryFragment"
+        android:name="com.example.darli.GalleryFragment"
+        android:label="GalleryFragment" />
+
+    <fragment
+        android:id="@+id/ustadzDetailFragment"
+        android:name="com.example.darli.UstadzDetailFragment"
+        android:label="Ustadz Profile"
+        tools:layout="@layout/fragment_profile_detail" />
+
+    <fragment
+        android:id="@+id/alumniDetailFragment"
+        android:name="com.example.darli.AlumniDetailFragment"
+        android:label="fragment_alumni_detail"
+        tools:layout="@layout/fragment_alumni_detail" />
+
+    <fragment
+        android:id="@+id/infoDetailFragment"
+        android:name="com.example.darli.InfoDetailFragment"
+        android:label="InfoDetailFragment"
+        tools:layout="@layout/fragment_info_detail">
+        <argument
+            android:name="info"
+            app:argType="com.example.darli.data.model.InfoPondok" />
+    </fragment>
+
+    <activity
+        android:id="@+id/registerActivity"
+        android:name="com.example.darli.RegisterActivity"
+        android:label="RegisterActivity" />
+
+    <fragment
+        android:id="@+id/commentListFragment"
+        android:name="com.example.darli.CommentListFragment"
+        android:label="Komentar Alumni"
+        tools:layout="@layout/fragment_comment_list" />
+
+    <fragment
+        android:id="@+id/addCommentFragment"
+        android:name="com.example.darli.AddCommentFragment"
+        android:label="Tulis Komentar"
+        tools:layout="@layout/fragment_add_comment" />
+
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.example.darli.LoginActivity"
+        android:label="LoginActivity" />
+</navigation>

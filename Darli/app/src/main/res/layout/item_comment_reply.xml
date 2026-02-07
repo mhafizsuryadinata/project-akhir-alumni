@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:layout_marginBottom="4dp"
+    android:background="@drawable/bg_reply_item">
+
+    <TextView
+        android:id="@+id/tvReplySender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nama Pengirim"
+        android:textStyle="bold"
+        android:textColor="@color/web_primary"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/tvReplyContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Isi balasan komentar..."
+        android:textColor="#374151"
+        android:textSize="13sp"
+        android:layout_marginTop="2dp"/>
+
+    <TextView
+        android:id="@+id/tvReplyDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12 Jan"
+        android:textColor="#9CA3AF"
+        android:textSize="10sp"
+        android:layout_marginTop="2dp"/>
+
+</LinearLayout>
