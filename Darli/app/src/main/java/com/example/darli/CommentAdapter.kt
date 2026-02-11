@@ -43,9 +43,33 @@ class CommentAdapter(
 
         // 1. Profile Photo
         if (!comment.user_photo.isNullOrEmpty()) {
-             val photoUrl = comment.user_photo.replace("127.0.0.1", "10.0.2.2").replace("localhost", "10.0.2.2")
+             var photoPath = comment.user_photo
+             
+             // Remove leading slash
+             if (photoPath.startsWith("/")) {
+                 photoPath = photoPath.substring(1)
+             }
+
+             val baseUrl = "http://10.0.2.2:8000/" 
+             var finalUrl = ""
+
+             if (photoPath.startsWith("http")) {
+                 finalUrl = photoPath
+             } else {
+                 if (photoPath.startsWith("uploads/profile/")) {
+                     // API Upload -> public/uploads/profile/ -> Direct access
+                     finalUrl = baseUrl + photoPath
+                 } else {
+                     // Web Upload -> storage/app/public/uploads/ -> Needs storage/ prefix
+                     finalUrl = baseUrl + "storage/" + photoPath
+                 }
+             }
+
+             // Handle localhost for emulator
+             finalUrl = finalUrl.replace("127.0.0.1", "10.0.2.2").replace("localhost", "10.0.2.2")
+             
              Glide.with(holder.itemView.context)
-                .load(photoUrl)
+                .load(finalUrl)
                 .placeholder(R.drawable.ic_profile_placeholder)
                 .error(R.drawable.ic_profile_placeholder)
                 .into(holder.ivUserPhoto)

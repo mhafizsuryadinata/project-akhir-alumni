@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.darli.R
 import com.example.darli.data.model.Lowongan
+import java.text.SimpleDateFormat
+import java.util.Locale
+import java.util.Date
 
 class LowonganAdapter(
     private var lowonganList: List<Lowongan>,
@@ -20,11 +23,14 @@ class LowonganAdapter(
         val ivLogo: ImageView = view.findViewById(R.id.ivCompanyLogo)
         val tvTitle: TextView = view.findViewById(R.id.tvJobTitle)
         val tvCompany: TextView = view.findViewById(R.id.tvCompanyName)
-        val tvType: TextView = view.findViewById(R.id.tvJobType)
-        val tvLocation: TextView = view.findViewById(R.id.tvJobLocation)
         val tvSalary: TextView = view.findViewById(R.id.tvJobSalary)
         val tvDeadline: TextView = view.findViewById(R.id.tvDeadline)
         val btnDetail: Button = view.findViewById(R.id.btnDetailJob)
+        
+        // Tags
+        val tvTag1: TextView = view.findViewById(R.id.tvTag1)
+        val tvTag2: TextView = view.findViewById(R.id.tvTag2)
+        val tvTag3: TextView = view.findViewById(R.id.tvTag3)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LowonganViewHolder {
@@ -38,10 +44,19 @@ class LowonganAdapter(
         
         holder.tvTitle.text = job.judul ?: "Tanpa Judul"
         holder.tvCompany.text = job.perusahaan ?: "-"
-        holder.tvType.text = job.tipe_pekerjaan ?: "-"
-        holder.tvLocation.text = job.lokasi ?: "-"
-        holder.tvSalary.text = job.gaji ?: "-"
-        holder.tvDeadline.text = "Berakhir: ${job.tanggal_tutup ?: "-"}"
+        holder.tvSalary.text = job.gaji ?: "Undisclosed"
+        
+        // Format Deadline
+        if (!job.tanggal_tutup.isNullOrEmpty()) {
+            holder.tvDeadline.text = "Berakhir: ${job.tanggal_tutup}"
+        } else {
+            holder.tvDeadline.text = "Segera"
+        }
+
+        // Bind Tags
+        holder.tvTag1.text = job.tipe_pekerjaan ?: "N/A" // e.g. Full-time
+        holder.tvTag2.text = job.lokasi ?: "Remote"      // e.g. Jakarta
+        holder.tvTag3.visibility = View.GONE             // Hide 3rd tag for now as we lack data
 
         if (!job.logo.isNullOrEmpty()) {
             val imageUrl = job.logo.replace("127.0.0.1", "10.0.2.2").replace("localhost", "10.0.2.2")

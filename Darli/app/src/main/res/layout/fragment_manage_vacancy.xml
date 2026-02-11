@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_light">
+
+    <!-- Header -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:background="#FFFF">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_arrow_back"
+            android:layout_centerVertical="true"
+            app:tint="@color/black"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Manage Vacancy"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_centerInParent="true"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true">
+            <ImageView
+                android:id="@+id/btnEdit"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_edit"
+                app:tint="@color/blue_primary"
+                android:layout_marginEnd="16dp"/>
+            <ImageView
+                android:id="@+id/btnDelete"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_delete"
+                app:tint="#EF4444"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Summary Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvJobType"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Full-time"
+                            android:textColor="@color/blue_primary"
+                            android:background="@drawable/bg_chip_blue_light"
+                            android:paddingHorizontal="8dp"
+                            android:paddingVertical="4dp"
+                            android:textSize="12sp"/>
+                        
+                        <TextView
+                            android:id="@+id/tvPostedDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Posted 2d ago"
+                            android:layout_marginStart="8dp"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp"/>
+                        
+                         <ImageView
+                            android:id="@+id/ivJobIcon"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@drawable/ic_business"
+                            android:padding="10dp"
+                            android:background="@drawable/bg_rounded_gray"
+                            app:tint="@color/gray_500"
+                            android:layout_weight="0"
+                            android:layout_marginStart="auto"
+                            />
+                    </LinearLayout>
+                   
+                   <RelativeLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="-30dp"
+                       android:layout_marginEnd="60dp"> <!-- Space for Icon -->
+                        <TextView
+                            android:id="@+id/tvJobTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Senior Marketing Manager"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:layout_marginTop="8dp"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_below="@id/tvJobTitle"
+                            android:layout_marginTop="4dp">
+                            <ImageView 
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/ic_business"
+                                app:tint="@color/text_secondary"/>
+                            <TextView
+                                android:id="@+id/tvCompany"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="PT. Global Tech"
+                                android:layout_marginStart="4dp"
+                                android:textColor="@color/text_secondary"/>
+                            <TextView 
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="•"
+                                android:layout_marginHorizontal="4dp"/>
+                            <ImageView 
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/ic_location"
+                                app:tint="@color/text_secondary"/>
+                            <TextView
+                                android:id="@+id/tvLocation"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Jakarta"
+                                android:layout_marginStart="4dp"
+                                android:textColor="@color/text_secondary"/>
+                        </LinearLayout>
+                   </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#EEE"
+                        android:layout_marginVertical="16dp"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Status: "
+                            android:textColor="@color/text_secondary"/>
+                        <TextView
+                            android:id="@+id/tvStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Active"
+                            android:textColor="#22C55E"
+                            android:textStyle="bold"
+                            android:layout_marginStart="50dp"/>
+
+                        <TextView
+                            android:id="@+id/btnViewPublic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="View Public Post"
+                            android:textColor="@color/blue_primary"
+                            android:textStyle="bold"
+                            android:layout_alignParentEnd="true"/>
+                    </RelativeLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Applicants Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="24dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Daftar Pelamar"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/tvApplicantCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12 New"
+                    android:background="@drawable/bg_chip_blue_light"
+                    android:textColor="@color/blue_primary"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="4dp"
+                    android:textSize="12sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <!-- Applicants List -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvApplicants"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:nestedScrollingEnabled="false"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="End of list"
+                android:layout_gravity="center"
+                android:textColor="@color/text_secondary"
+                android:layout_marginTop="16dp"
+                android:textSize="12sp"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

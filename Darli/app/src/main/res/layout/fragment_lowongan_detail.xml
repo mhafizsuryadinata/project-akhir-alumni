@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_light">
+
+    <!-- Header -->
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:background="#FFFF">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_back"
+            android:layout_centerVertical="true"
+            app:tint="@color/black"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Detail Pekerjaan"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_centerInParent="true"/>
+
+        <ImageView
+            android:id="@+id/btnBookmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_bookmark_border"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            app:tint="@color/black"/>
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/header"
+        android:layout_above="@id/footer">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Logo -->
+            <ImageView
+                android:id="@+id/ivLogo"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/ic_work"
+                android:layout_gravity="center"
+               android:background="@drawable/circle_background"
+                android:padding="16dp"
+                app:tint="@color/text_secondary"/>
+
+            <!-- Titles -->
+            <TextView
+                android:id="@+id/tvJobTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Senior UI/UX Designer"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:layout_marginTop="16dp"/>
+
+            <TextView
+                android:id="@+id/tvCompanyInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tokopedia • Teknologi"
+                android:textSize="14sp"
+                android:textColor="@color/text_secondary"
+                android:gravity="center"
+                android:layout_marginTop="4dp"/>
+
+            <!-- Info Bubbles -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:id="@+id/tvLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jakarta, ID"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:background="@drawable/bg_chip_gray_light"
+                    android:layout_marginEnd="8dp"/>
+
+                <TextView
+                    android:id="@+id/tvSalary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="15jt - 20jt"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:background="@drawable/bg_chip_gray_light"/>
+            </LinearLayout>
+             <TextView
+                    android:id="@+id/tvDeadline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="20 Oct"
+                    android:textColor="#EF4444"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:background="@drawable/bg_chip_red_light"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"/>
+
+            <!-- Alumni Section (Placeholder) -->
+             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="16dp"
+                android:padding="8dp"
+                android:background="@drawable/bg_rounded_blue_light">
+                
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                     <!-- Avatars will be added dynamically or hardcoded for now -->
+                     <ImageView
+                         android:layout_width="24dp"
+                         android:layout_height="24dp"
+                         android:src="@drawable/ic_profile_placeholder"/>
+                     <ImageView
+                         android:layout_width="24dp"
+                         android:layout_height="24dp"
+                         android:src="@drawable/ic_profile_placeholder"
+                         android:layout_marginStart="-8dp"/>
+                </LinearLayout>
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3 Alumni bekerja disini"
+                    android:textColor="@color/blue_primary"
+                    android:textStyle="bold"
+                    android:layout_marginStart="8dp"/>
+            </LinearLayout>
+
+            <!-- Tabs -->
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:tabIndicatorColor="@color/black"
+                app:tabSelectedTextColor="@color/black"
+                app:tabTextColor="@color/text_secondary">
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Deskripsi"/>
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kualifikasi"/>
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Benefit"/>
+            </com.google.android.material.tabs.TabLayout>
+
+            <!-- Description Content -->
+            <TextView
+                android:id="@+id/tvSectionTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tentang Pekerjaan"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_marginTop="16dp"/>
+
+            <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Deskripsi pekerjaan akan muncul di sini..."
+                android:lineSpacingExtra="4dp"
+                android:textColor="@color/text_secondary"
+                android:layout_marginTop="8dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Footer -->
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="16dp"
+        android:background="#FFFF"
+        android:elevation="8dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAction"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Lamar Sekarang"
+            app:cornerRadius="28dp"
+            android:backgroundTint="@color/blue_primary"/>
+    </LinearLayout>
+
+</RelativeLayout>

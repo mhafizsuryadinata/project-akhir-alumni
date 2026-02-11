@@ -61,7 +61,10 @@ class LowonganFragment : Fragment() {
     private fun setupRecyclerView() {
         adapter = LowonganAdapter(emptyList()) { job ->
             // Handle detail click
-            Toast.makeText(context, "${job.judul} di ${job.perusahaan}", Toast.LENGTH_SHORT).show()
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.nav_host_fragment, LowonganDetailFragment.newInstance(job))
+                .addToBackStack(null)
+                .commit()
         }
         rvLowongan.layoutManager = LinearLayoutManager(context)
         rvLowongan.adapter = adapter
