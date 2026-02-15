@@ -42,9 +42,7 @@ class KontakUstadzFragment : Fragment() {
         fetchData()
 
         btnBack.setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.nav_host_fragment, MenuFragment())
-                .commit()
+            findNavController().popBackStack()
         }
 
         return view

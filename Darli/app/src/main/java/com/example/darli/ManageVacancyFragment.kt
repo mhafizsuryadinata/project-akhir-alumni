@@ -8,6 +8,7 @@ package com.example.darli
  import android.widget.TextView
  import android.widget.Toast
  import androidx.fragment.app.Fragment
+ import androidx.navigation.fragment.findNavController
  import androidx.recyclerview.widget.LinearLayoutManager
  import androidx.recyclerview.widget.RecyclerView
  import com.example.darli.adapters.ApplicantAdapter
@@ -53,7 +54,7 @@ package com.example.darli
          val rvApplicants = view.findViewById<RecyclerView>(R.id.rvApplicants)
  
          btnBack.setOnClickListener {
-             parentFragmentManager.popBackStack()
+             findNavController().popBackStack()
          }
  
          lowongan?.let { job ->

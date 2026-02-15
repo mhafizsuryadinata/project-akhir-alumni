@@ -92,6 +92,32 @@
         android:label="Tulis Komentar"
         tools:layout="@layout/fragment_add_comment" />
 
+    <fragment
+        android:id="@+id/lowonganDetailFragment"
+        android:name="com.example.darli.LowonganDetailFragment"
+        android:label="Detail Lowongan"
+        tools:layout="@layout/fragment_lowongan_detail">
+        <argument
+            android:name="arg_lowongan"
+            app:argType="com.example.darli.data.model.Lowongan" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/manageVacancyFragment"
+        android:name="com.example.darli.ManageVacancyFragment"
+        android:label="Manage Vacancy"
+        tools:layout="@layout/fragment_manage_vacancy">
+        <argument
+            android:name="arg_lowongan"
+            app:argType="com.example.darli.data.model.Lowongan" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/myApplicationsFragment"
+        android:name="com.example.darli.MyApplicationsFragment"
+        android:label="Lamaran Saya"
+        tools:layout="@layout/fragment_my_applications" />
+
     <activity
         android:id="@+id/loginActivity"
         android:name="com.example.darli.LoginActivity"

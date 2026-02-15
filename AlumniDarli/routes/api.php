@@ -32,3 +32,5 @@ Route::get('get_galeri',[ApiController::class, 'getGaleri']);
 Route::get('events',[ApiController::class, 'getEvents']);
 Route::get('kontak_ustadz',[ApiController::class, 'getKontakUstadz']);
 Route::get('lowongan',[ApiController::class, 'getLowongan']);
+Route::post('apply_lowongan', [ApiController::class, 'applyLowongan']);
+Route::get('my_applications/{id_user}', [ApiController::class, 'getMyApplications']);

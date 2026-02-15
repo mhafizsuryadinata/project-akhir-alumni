@@ -410,4 +410,83 @@ class ApiController extends Controller
             })
         ]);
     }
+
+    public function applyLowongan(Request $request)
+    {
+        $validator = \Illuminate\Support\Facades\Validator::make($request->all(), [
+            'lowongan_id' => 'required|exists:lowongan,id',
+            'id_user' => 'required|exists:users,id_user',
+            'cv' => 'nullable|file|mimes:pdf,doc,docx|max:5120',
+            'cover_letter' => 'nullable|string',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'response_code' => 400,
+                'message' => 'Validasi gagal',
+                'errors' => $validator->errors()
+            ]);
+        }
+
+        // Cek apakah sudah pernah apply
+        $existingLamaran = \App\Models\Lamaran::where('lowongan_id', $request->lowongan_id)
+                                  ->where('user_id', $request->id_user)
+                                  ->first();
+        
+        if ($existingLamaran) {
+            return response()->json([
+                'response_code' => 400,
+                'message' => 'Anda sudah melamar untuk lowongan ini.'
+            ]);
+        }
+
+        $data = [
+            'lowongan_id' => $request->lowongan_id,
+            'user_id' => $request->id_user,
+            'cover_letter' => $request->cover_letter,
+            'status' => 'Pending',
+            'status_admin' => 'Menunggu',
+            'status_pimpinan' => 'Menunggu',
+        ];
+        
+        // Upload CV jika ada
+        if ($request->hasFile('cv')) {
+            $path = $request->file('cv')->store('lamaran/cv', 'public');
+            $data['cv_path'] = 'storage/' . $path;
+        }
+        
+        \App\Models\Lamaran::create($data);
+        
+        return response()->json([
+            'response_code' => 200,
+            'message' => 'Lamaran Anda berhasil dikirim!'
+        ]);
+    }
+
+    public function getMyApplications($id_user)
+    {
+        $lamaran = \App\Models\Lamaran::with('lowongan')
+            ->where('user_id', $id_user)
+            ->get()
+            ->map(function ($item) {
+                return [
+                    'id' => $item->id,
+                    'lowongan_id' => $item->lowongan_id,
+                    'judul_lowongan' => $item->lowongan->judul,
+                    'perusahaan' => $item->lowongan->perusahaan,
+                    'logo' => $item->lowongan->logo,
+                    'status' => $item->status, // Main status (Pending, Diterima, Ditolak)
+                    'status_admin' => $item->status_admin,
+                    'status_pimpinan' => $item->status_pimpinan,
+                    'final_status' => $item->final_status, // Using the accessor from model
+                    'applied_at' => $item->created_at->format('d M Y'),
+                ];
+            });
+
+        return response()->json([
+            'response_code' => 200,
+            'message' => 'Berhasil mengambil data lamaran',
+            'content' => $lamaran
+        ]);
+    }
 }

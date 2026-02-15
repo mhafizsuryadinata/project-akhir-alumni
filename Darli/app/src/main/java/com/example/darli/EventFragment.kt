@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.darli.adapters.EventAdapter
 import com.example.darli.data.model.EventResponse
 import com.example.darli.data.network.ApiClient
+import androidx.navigation.fragment.findNavController
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -50,9 +51,7 @@ class EventFragment : Fragment() {
         fetchEvents()
 
         btnBack.setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.nav_host_fragment, MenuFragment())
-                .commit()
+            findNavController().popBackStack()
         }
 
         return view

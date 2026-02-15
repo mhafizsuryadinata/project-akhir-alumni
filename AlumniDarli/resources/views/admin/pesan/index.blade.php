@@ -114,39 +114,7 @@
                                         </form>
                                     </div>
 
-                                    <!-- Reply Modal -->
-                                    <div class="modal fade" id="replyModal{{ $pesan->id }}" tabindex="-1" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content border-0 shadow">
-                                                <div class="modal-header bg-primary text-white">
-                                                    <h5 class="modal-title text-white"><i class="fas fa-paper-plane me-2"></i>Balas Pesan Alumni</h5>
-                                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <form action="{{ route('admin.pesan.reply', $pesan->id) }}" method="POST">
-                                                    @csrf
-                                                    <div class="modal-body p-4">
-                                                        <div class="mb-4">
-                                                            <label class="form-label fw-bold text-muted small uppercase">Pesan dari Alumni:</label>
-                                                            <div class="p-3 bg-light rounded-3 border small">
-                                                                <strong class="d-block mb-1">{{ $pesan->subject }}</strong>
-                                                                {{ $pesan->message }}
-                                                            </div>
-                                                        </div>
-                                                        <div class="mb-0">
-                                                            <label class="form-label fw-bold">Tulis Balasan Admin:</label>
-                                                            <textarea name="reply" class="form-control" rows="5" required placeholder="Ketik balasan Anda di sini...">{{ $pesan->admin_reply }}</textarea>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer bg-light">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                                        <button type="submit" class="btn btn-success px-4">
-                                                            <i class="fas fa-paper-plane me-1"></i> Kirim Balasan
-                                                        </button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    {{-- Modal dipindahkan ke luar loop untuk memperbaiki stacking context dan layout --}}
                                 </td>
                             </tr>
                             @empty
@@ -164,6 +132,44 @@
         </div>
     </div>
 </div>
+
+<!-- Modal Balasan di Luar Loop -->
+@foreach($pesans as $pesan)
+<div class="modal fade" id="replyModal{{ $pesan->id }}" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title text-white"><i class="fas fa-paper-plane me-2"></i>Balas Pesan Alumni</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{ route('admin.pesan.reply', $pesan->id) }}" method="POST">
+                @csrf
+                <div class="modal-body p-4">
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <label class="form-label fw-bold text-muted small uppercase mb-0">Pesan dari Alumni:</label>
+                            <span class="badge bg-light text-primary border">{{ $pesan->subject }}</span>
+                        </div>
+                        <div class="p-3 bg-light rounded-3 border small shadow-sm fst-italic">
+                            {{ $pesan->message }}
+                        </div>
+                    </div>
+                    <div class="mb-0">
+                        <label class="form-label fw-bold">Tulis Balasan Admin:</label>
+                        <textarea name="reply" class="form-control" rows="8" required placeholder="Ketik balasan Anda di sini...">{{ $pesan->admin_reply }}</textarea>
+                    </div>
+                </div>
+                <div class="modal-footer bg-light border-0">
+                    <button type="button" class="btn btn-secondary px-3" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary px-4">
+                        <i class="fas fa-paper-plane me-2"></i>Kirim Balasan
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
 
 <style>
     #pesanTable thead th {

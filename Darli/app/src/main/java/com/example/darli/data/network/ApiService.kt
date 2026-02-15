@@ -46,7 +46,6 @@ interface ApiService {
 
     @GET("get_galeri")
     fun getGallery(): Call<com.example.darli.data.model.GalleryResponse>
-    @retrofit2.http.FormUrlEncoded
     @retrofit2.http.POST("update_profile")
     fun updateProfile(
         @retrofit2.http.Field("id_user") idUser: String,
@@ -61,4 +60,18 @@ interface ApiService {
         @retrofit2.http.Field("linkedin") linkedin: String,
         @retrofit2.http.Field("pendidikan_lanjutan") pendidikanLanjutan: String
     ): Call<com.example.darli.data.model.AlumniUpdateResponse>
+
+    @retrofit2.http.Multipart
+    @retrofit2.http.POST("apply_lowongan")
+    fun applyLowongan(
+        @retrofit2.http.Part("lowongan_id") lowonganId: okhttp3.RequestBody,
+        @retrofit2.http.Part("id_user") idUser: okhttp3.RequestBody,
+        @retrofit2.http.Part("cover_letter") coverLetter: okhttp3.RequestBody?,
+        @retrofit2.http.Part cv: okhttp3.MultipartBody.Part?
+    ): Call<com.example.darli.data.model.ApplyResponse>
+
+    @retrofit2.http.GET("my_applications/{id_user}")
+    fun getMyApplications(
+        @retrofit2.http.Path("id_user") idUser: Int
+    ): Call<com.example.darli.data.model.MyApplicationsResponse>
 }

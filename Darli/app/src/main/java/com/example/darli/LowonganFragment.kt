@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.darli.adapters.LowonganAdapter
 import com.example.darli.data.model.LowonganResponse
 import com.example.darli.data.network.ApiClient
+import androidx.navigation.fragment.findNavController
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -42,6 +43,7 @@ class LowonganFragment : Fragment() {
         tvEmpty = view.findViewById(R.id.tvEmpty)
         layoutError = view.findViewById(R.id.layoutError)
         btnRetry = view.findViewById(R.id.btnRetry)
+        val btnMyApplications = view.findViewById<ImageView>(R.id.btnMyApplications)
 
         btnRetry.setOnClickListener { fetchData() }
         btnBack = view.findViewById(R.id.btnBack)
@@ -50,9 +52,11 @@ class LowonganFragment : Fragment() {
         fetchData()
 
         btnBack.setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.nav_host_fragment, MenuFragment())
-                .commit()
+            findNavController().popBackStack()
+        }
+
+        btnMyApplications.setOnClickListener {
+            findNavController().navigate(R.id.myApplicationsFragment)
         }
 
         return view
@@ -60,11 +64,10 @@ class LowonganFragment : Fragment() {
 
     private fun setupRecyclerView() {
         adapter = LowonganAdapter(emptyList()) { job ->
-            // Handle detail click
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.nav_host_fragment, LowonganDetailFragment.newInstance(job))
-                .addToBackStack(null)
-                .commit()
+            val bundle = Bundle().apply {
+                putSerializable("arg_lowongan", job)
+            }
+            findNavController().navigate(R.id.lowonganDetailFragment, bundle)
         }
         rvLowongan.layoutManager = LinearLayoutManager(context)
         rvLowongan.adapter = adapter
