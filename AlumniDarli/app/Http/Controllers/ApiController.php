@@ -628,4 +628,50 @@ class ApiController extends Controller
             'message' => 'Berhasil mendaftar acara!'
         ]);
     }
+    public function storeEvent(Request $request)
+    {
+        $validator = \Illuminate\Support\Facades\Validator::make($request->all(), [
+            'id_user' => 'required|exists:users,id_user',
+            'title' => 'required|string|max:255',
+            'category' => 'required|string',
+            'date' => 'required|date',
+            'time' => 'required|string', // Consider validating time format H:i
+            'location' => 'required|string',
+            'description' => 'required|string',
+            'image' => 'nullable|image|max:2048',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'response_code' => 400,
+                'message' => 'Validasi gagal',
+                'errors' => $validator->errors()
+            ]);
+        }
+
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('uploads/events', 'public');
+        }
+
+        $event = \App\Models\Event::create([
+            'user_id' => $request->id_user,
+            'title' => $request->title,
+            'category' => $request->category,
+            'date' => $request->date,
+            'time' => $request->time,
+            'location' => $request->location,
+            'description' => $request->description,
+            'image' => $imagePath,
+            'status' => 'upcoming',
+            'status_admin' => 'pending',
+            'status_pimpinan' => 'pending'
+        ]);
+
+        return response()->json([
+            'response_code' => 200,
+            'message' => 'Event berhasil dibuat dan menunggu persetujuan Admin!',
+            'content' => $event
+        ]);
+    }
 }

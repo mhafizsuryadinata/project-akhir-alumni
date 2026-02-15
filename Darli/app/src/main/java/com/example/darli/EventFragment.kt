@@ -18,6 +18,7 @@ import com.example.darli.adapters.EventAdapter
 import com.example.darli.data.model.Event
 import com.example.darli.data.model.EventResponse
 import com.example.darli.data.network.ApiClient
+import com.example.darli.data.network.ApiService
 import com.google.android.material.tabs.TabLayout
 import retrofit2.Call
 import retrofit2.Callback
@@ -86,8 +87,7 @@ class EventFragment : Fragment() {
         }
         
         fabAddEvent.setOnClickListener {
-             // Navigate to Add Event if implemented
-             Toast.makeText(context, "Add Event Feature coming soon", Toast.LENGTH_SHORT).show()
+             findNavController().navigate(R.id.action_eventFragment_to_addEventFragment)
         }
     }
 

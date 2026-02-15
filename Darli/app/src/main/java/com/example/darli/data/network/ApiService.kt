@@ -2,7 +2,9 @@ package com.example.darli.data.network
 
 import com.example.darli.data.model.Alumni
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface ApiService {
@@ -108,5 +110,18 @@ interface ApiService {
         @retrofit2.http.Part("level") level: okhttp3.RequestBody,
         @retrofit2.http.Part("posted_by") postedBy: okhttp3.RequestBody,
         @retrofit2.http.Part logo: okhttp3.MultipartBody.Part?
+    ): Call<com.example.darli.data.model.GeneralResponse>
+
+    @retrofit2.http.Multipart
+    @retrofit2.http.POST("store_event")
+    fun storeEvent(
+        @retrofit2.http.Part("id_user") idUser: okhttp3.RequestBody,
+        @retrofit2.http.Part("title") title: okhttp3.RequestBody,
+        @retrofit2.http.Part("category") category: okhttp3.RequestBody,
+        @retrofit2.http.Part("date") date: okhttp3.RequestBody,
+        @retrofit2.http.Part("time") time: okhttp3.RequestBody,
+        @retrofit2.http.Part("location") location: okhttp3.RequestBody,
+        @retrofit2.http.Part("description") description: okhttp3.RequestBody,
+        @retrofit2.http.Part image: okhttp3.MultipartBody.Part?
     ): Call<com.example.darli.data.model.GeneralResponse>
 }

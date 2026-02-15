@@ -280,3 +280,8 @@ Route::middleware(['auth'])->group(function () {
 // route halaman kontak dan bantuan
 Route::post('/contact/send', [\App\Http\Controllers\ContactController::class, 'send'])->name('kontak.kirim');
 
+
+Route::get('/debug-events', function() {
+    $events = \App\Models\Event::with('user')->orderBy('date', 'desc')->get();
+    return response()->json($events);
+});

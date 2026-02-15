@@ -36,3 +36,4 @@ Route::post('apply_lowongan', [ApiController::class, 'applyLowongan']);
 Route::get('my_applications/{id_user}', [ApiController::class, 'getMyApplications']);
 Route::post('store_lowongan', [ApiController::class, 'storeLowongan']);
 Route::post('join_event', [ApiController::class, 'joinEvent']);
+Route::post('store_event', [ApiController::class, 'storeEvent']);
