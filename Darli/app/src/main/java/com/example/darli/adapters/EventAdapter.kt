@@ -10,58 +10,87 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.darli.R
 import com.example.darli.data.model.Event
-import java.text.SimpleDateFormat
-import java.util.Locale
 
 class EventAdapter(
-    private var eventList: List<Event>,
-    private val onItemClick: (Event) -> Unit
+    private var events: List<Event>,
+    private val currentUserId: Int,
+    private val onDetailClick: (Event) -> Unit,
+    private val onRegisterClick: (Event) -> Unit,
+    private val onEditClick: (Event) -> Unit,
+    private val onDeleteClick: (Event) -> Unit
 ) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
 
-    class EventViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val tvMonth: TextView = view.findViewById(R.id.tvEventMonth)
-        val tvDay: TextView = view.findViewById(R.id.tvEventDay)
-        val tvTitle: TextView = view.findViewById(R.id.tvEventTitle)
-        val tvLocation: TextView = view.findViewById(R.id.tvEventLocation)
+    class EventViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val ivEventImage: ImageView = itemView.findViewById(R.id.ivEventImage)
+        val tvYourEvent: TextView = itemView.findViewById(R.id.tvYourEvent)
+        val tvEventLocation: TextView = itemView.findViewById(R.id.tvEventLocation)
+        val tvEventTitle: TextView = itemView.findViewById(R.id.tvEventTitle)
+        val tvEventDate: TextView = itemView.findViewById(R.id.tvEventDate)
+        
+        val layoutButtonsRegister: View = itemView.findViewById(R.id.layoutButtonsRegister)
+        val btnRegister: Button = itemView.findViewById(R.id.btnRegister)
+        val btnDetails: Button = itemView.findViewById(R.id.btnDetails)
+        
+        val layoutButtonsOwner: View = itemView.findViewById(R.id.layoutButtonsOwner)
+        val btnEdit: Button = itemView.findViewById(R.id.btnEdit)
+        val btnDelete: Button = itemView.findViewById(R.id.btnDelete)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_event_vertical, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_event, parent, false)
         return EventViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
-        val event = eventList[position]
+        val event = events[position]
         
-        holder.tvTitle.text = event.title ?: "Tanpa Judul"
-        holder.tvLocation.text = event.location ?: "-"
+        holder.tvEventTitle.text = event.title
+        holder.tvEventLocation.text = event.location
+        holder.tvEventDate.text = "${event.date} • ${event.time} WIB" // Assuming date is formatted
 
-        // Parse Date (Assuming ISO format or similar)
-        val dateStr = event.date ?: ""
-        if (dateStr.length >= 10) {
-            try {
-                val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-                val dateObj = sdf.parse(dateStr)
-                dateObj?.let {
-                    holder.tvMonth.text = SimpleDateFormat("MMM", Locale.ENGLISH).format(it).uppercase()
-                    holder.tvDay.text = SimpleDateFormat("dd", Locale.ENGLISH).format(it)
-                }
-            } catch (e: Exception) {
-                 holder.tvMonth.text = "DEC"
-                 holder.tvDay.text = "15"
+        // Image loading
+        if (!event.image.isNullOrEmpty()) {
+             Glide.with(holder.itemView.context)
+                 .load(event.image)
+                 .placeholder(R.color.gray_light)
+                 .error(R.color.gray_light)
+                 .centerCrop()
+                 .into(holder.ivEventImage)
+        } else {
+             holder.ivEventImage.setImageResource(R.color.gray_light)
+        }
+        
+        // Ownership Check
+        val isOwner = event.user_id == currentUserId
+        
+        if (isOwner) {
+            holder.tvYourEvent.visibility = View.VISIBLE
+            holder.layoutButtonsRegister.visibility = View.GONE
+            holder.layoutButtonsOwner.visibility = View.VISIBLE
+        } else {
+            holder.tvYourEvent.visibility = View.GONE
+            holder.layoutButtonsRegister.visibility = View.VISIBLE
+            holder.layoutButtonsOwner.visibility = View.GONE
+            
+            if (event.is_joined == true) {
+                 holder.btnRegister.text = "Terdaftar"
+                 holder.btnRegister.isEnabled = false
+            } else {
+                 holder.btnRegister.text = "Daftar"
+                 holder.btnRegister.isEnabled = true
             }
         }
 
-        holder.itemView.setOnClickListener {
-            onItemClick(event)
-        }
+        holder.btnDetails.setOnClickListener { onDetailClick(event) }
+        holder.btnRegister.setOnClickListener { onRegisterClick(event) }
+        holder.btnEdit.setOnClickListener { onEditClick(event) }
+        holder.btnDelete.setOnClickListener { onDeleteClick(event) }
     }
 
-    override fun getItemCount() = eventList.size
-
-    fun updateData(newList: List<Event>) {
-        eventList = newList
+    override fun getItemCount(): Int = events.size
+    
+    fun updateData(newEvents: List<Event>) {
+        events = newEvents
         notifyDataSetChanged()
     }
 }

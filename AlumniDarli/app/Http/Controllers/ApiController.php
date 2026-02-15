@@ -347,22 +347,56 @@ class ApiController extends Controller
         ]);
     }
 
-    public function getEvents()
+    public function getEvents(Request $request)
     {
-        $data = \DB::table('events')->latest()->get();
+        $id_user = $request->input('id_user');
+
+        $query = \App\Models\Event::query();
+
+        // If user_id provided, show approved AND own pending events
+        if ($id_user) {
+            $query->where(function($q) use ($id_user) {
+                $q->where(function($sub) {
+                    $sub->where('status_admin', 'approved')
+                        ->where('status_pimpinan', 'approved');
+                })->orWhere('user_id', $id_user);
+            });
+        } else {
+            // General public / guest: show only approved
+            $query->where('status_admin', 'approved')
+                  ->where('status_pimpinan', 'approved');
+        }
+
+        $events = $query->latest('date')->get();
+
         return response()->json([
             'response_code' => 200,
-            'content' => $data->map(function($item) {
+            'content' => $events->map(function($item) use ($id_user) {
+                $is_joined = false;
+                if ($id_user) {
+                    // Check pivot table
+                    $is_joined = \DB::table('event_user')
+                        ->where('event_id', $item->id)
+                        ->where('user_id', $id_user)
+                        ->exists();
+                }
+
                 return [
                     'id' => $item->id,
                     'title' => $item->title,
                     'category' => $item->category,
                     'date' => $item->date ? \Carbon\Carbon::parse($item->date)->format('d M Y') : '-',
+                    'raw_date' => $item->date, // For sorting/filtering in app
                     'time' => $item->time,
                     'location' => $item->location,
                     'description' => $item->description,
                     'image' => $item->image ? asset('storage/' . $item->image) : null,
-                    'status' => $item->status
+                    'status' => $item->status, // 'upcoming', 'finished' etc based on date (or database column if exists)
+                    'user_id' => $item->user_id,
+                    'creator_name' => $item->user->nama ?? 'Admin',
+                    'is_joined' => $is_joined,
+                    'status_admin' => $item->status_admin,
+                    'status_pimpinan' => $item->status_pimpinan,
                 ];
             })
         ]);
@@ -487,6 +521,111 @@ class ApiController extends Controller
             'response_code' => 200,
             'message' => 'Berhasil mengambil data lamaran',
             'content' => $lamaran
+        ]);
+    }
+
+    public function storeLowongan(Request $request)
+    {
+        $validator = \Illuminate\Support\Facades\Validator::make($request->all(), [
+            'judul' => 'required|string|max:255',
+            'perusahaan' => 'required|string|max:255',
+            'tipe_pekerjaan' => 'required|string',
+            'lokasi' => 'required|string',
+            'deskripsi' => 'required|string',
+            'kualifikasi' => 'required|string',
+            'benefit' => 'nullable|string',
+            'gaji_min' => 'nullable|numeric',
+            'gaji_max' => 'nullable|numeric',
+            'email_kontak' => 'required|email',
+            'website' => 'nullable|url',
+            'tanggal_tutup' => 'required|date',
+            'logo_perusahaan' => 'nullable|image|max:2048',
+            'level' => 'required|in:Entry Level,Mid Level,Senior Level,Manager,Director',
+            'posted_by' => 'required|exists:users,id_user'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'response_code' => 400,
+                'message' => 'Validasi gagal',
+                'errors' => $validator->errors()
+            ]);
+        }
+
+        $logoPath = null;
+        if ($request->hasFile('logo_perusahaan')) {
+            $logoPath = $request->file('logo_perusahaan')->store('uploads/company_logos', 'public');
+        }
+
+        $lowongan = \App\Models\Lowongan::create([
+            'judul' => $request->judul,
+            'perusahaan' => $request->perusahaan,
+            'tipe_pekerjaan' => $request->tipe_pekerjaan,
+            'lokasi' => $request->lokasi,
+            'deskripsi' => $request->deskripsi,
+            'kualifikasi' => $request->kualifikasi,
+            'benefit' => $request->benefit,
+            'gaji_min' => $request->gaji_min,
+            'gaji_max' => $request->gaji_max,
+            'email_kontak' => $request->email_kontak,
+            'website' => $request->website,
+            'tanggal_tutup' => $request->tanggal_tutup,
+            'logo_perusahaan' => $logoPath,
+            'level' => $request->level,
+            'status' => 'Aktif',
+            'posted_by' => $request->posted_by,
+            'status_admin' => 'pending', // Alumni postings need approval
+            'status_pimpinan' => 'pending'
+        ]);
+
+        return response()->json([
+            'response_code' => 200,
+            'message' => 'Lowongan berhasil dibuat dan menunggu persetujuan Admin!',
+            'content' => $lowongan
+        ]);
+    }
+    public function joinEvent(Request $request)
+    {
+        $validator = \Illuminate\Support\Facades\Validator::make($request->all(), [
+            'event_id' => 'required|exists:events,id',
+            'user_id' => 'required|exists:users,id_user',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'response_code' => 400,
+                'message' => 'Validasi gagal',
+                'errors' => $validator->errors()
+            ]);
+        }
+
+        $user = User::find($request->user_id);
+        $event = \App\Models\Event::find($request->event_id);
+
+        // Check if already joined
+        $exists = \DB::table('event_user')
+            ->where('event_id', $event->id)
+            ->where('user_id', $user->id_user)
+            ->exists();
+
+        if ($exists) {
+            return response()->json([
+                'response_code' => 400,
+                'message' => 'Anda sudah terdaftar di acara ini.'
+            ]);
+        }
+
+        // Attach user to event
+        \DB::table('event_user')->insert([
+            'event_id' => $event->id,
+            'user_id' => $user->id_user,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        return response()->json([
+            'response_code' => 200,
+            'message' => 'Berhasil mendaftar acara!'
         ]);
     }
 }

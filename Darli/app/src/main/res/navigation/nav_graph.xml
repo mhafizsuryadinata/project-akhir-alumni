@@ -31,7 +31,11 @@
     <fragment
         android:id="@+id/eventFragment"
         android:name="com.example.darli.EventFragment"
-        android:label="EventFragment" />
+        android:label="EventFragment">
+        <action
+            android:id="@+id/action_eventFragment_to_eventDetailFragment"
+            app:destination="@id/eventDetailFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/infoFragment"
@@ -122,4 +126,20 @@
         android:id="@+id/loginActivity"
         android:name="com.example.darli.LoginActivity"
         android:label="LoginActivity" />
+
+    <fragment
+        android:id="@+id/addLowonganFragment"
+        android:name="com.example.darli.AddLowonganFragment"
+        android:label="Tambah Lowongan"
+        tools:layout="@layout/fragment_add_lowongan" />
+    <fragment
+        android:id="@+id/eventDetailFragment"
+        android:name="com.example.darli.EventDetailFragment"
+        android:label="Detail Event"
+        tools:layout="@layout/fragment_event_detail">
+        <argument
+            android:name="event_json"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 </navigation>

@@ -23,6 +23,9 @@
     <color name="black">#160808</color>
     <color name="background">#F5F5F5</color>
     <color name="red">#F44336</color>
+    <color name="green_primary">#4CAF50</color>
+    <color name="green_light">#81C784</color>
+    <color name="green_dark">#388E3C</color>
     <color name="gray_primary">#94A3B8</color>
     <color name="web_gradient_start">#1a2a6c</color>
     <color name="web_gradient_center">#b21f1f</color>

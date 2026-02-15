@@ -102,6 +102,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/chipAll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Semua"
@@ -112,6 +113,7 @@
                 android:layout_marginEnd="8dp"/>
 
             <TextView
+                android:id="@+id/chipTech"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Teknologi"
@@ -122,6 +124,7 @@
                 android:layout_marginEnd="8dp"/>
 
             <TextView
+                android:id="@+id/chipFinance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Keuangan"
@@ -132,6 +135,7 @@
                 android:layout_marginEnd="8dp"/>
                 
              <TextView
+                android:id="@+id/chipBumn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="BUMN"
@@ -202,12 +206,19 @@
                 android:text="Belum ada lowongan aktif"
                 android:layout_marginBottom="16dp"/>
 
-            <Button
-                android:id="@+id/btnRetry"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Coba Lagi"/>
         </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/fabAddLowongan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:text="Tambah"
+            android:textColor="@color/white"
+            app:icon="@drawable/ic_add"
+            app:iconTint="@color/white"
+            app:backgroundTint="@color/blue_primary" />
     </FrameLayout>
 
 </LinearLayout>

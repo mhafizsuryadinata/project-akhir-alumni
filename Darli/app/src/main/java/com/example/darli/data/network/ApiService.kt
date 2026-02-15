@@ -36,7 +36,22 @@ interface ApiService {
     fun getInfoPondok(): Call<com.example.darli.data.model.InfoPondokResponse>
 
     @GET("events")
-    fun getEvents(): Call<com.example.darli.data.model.EventResponse>
+    fun getEvents(@retrofit2.http.Query("id_user") idUser: Int? = null): Call<com.example.darli.data.model.EventResponse>
+
+    @androidx.annotation.Keep
+    data class JoinEventResponse(
+        val response_code: Int,
+        val message: String
+    )
+
+    @androidx.annotation.Keep
+    data class JoinEventRequest(
+        val event_id: Int,
+        val user_id: Int
+    )
+
+    @POST("join_event")
+    fun joinEvent(@retrofit2.http.Body request: JoinEventRequest): Call<JoinEventResponse>
 
     @GET("kontak_ustadz")
     fun getKontakUstadz(): Call<com.example.darli.data.model.KontakUstadzResponse>
@@ -74,4 +89,24 @@ interface ApiService {
     fun getMyApplications(
         @retrofit2.http.Path("id_user") idUser: Int
     ): Call<com.example.darli.data.model.MyApplicationsResponse>
+
+    @retrofit2.http.Multipart
+    @retrofit2.http.POST("store_lowongan")
+    fun storeLowongan(
+        @retrofit2.http.Part("judul") judul: okhttp3.RequestBody,
+        @retrofit2.http.Part("perusahaan") perusahaan: okhttp3.RequestBody,
+        @retrofit2.http.Part("tipe_pekerjaan") tipePekerjaan: okhttp3.RequestBody,
+        @retrofit2.http.Part("lokasi") lokasi: okhttp3.RequestBody,
+        @retrofit2.http.Part("deskripsi") deskripsi: okhttp3.RequestBody,
+        @retrofit2.http.Part("kualifikasi") kualifikasi: okhttp3.RequestBody,
+        @retrofit2.http.Part("benefit") benefit: okhttp3.RequestBody?,
+        @retrofit2.http.Part("gaji_min") gajiMin: okhttp3.RequestBody?,
+        @retrofit2.http.Part("gaji_max") gajiMax: okhttp3.RequestBody?,
+        @retrofit2.http.Part("email_kontak") emailKontak: okhttp3.RequestBody,
+        @retrofit2.http.Part("website") website: okhttp3.RequestBody?,
+        @retrofit2.http.Part("tanggal_tutup") tanggalTutup: okhttp3.RequestBody,
+        @retrofit2.http.Part("level") level: okhttp3.RequestBody,
+        @retrofit2.http.Part("posted_by") postedBy: okhttp3.RequestBody,
+        @retrofit2.http.Part logo: okhttp3.MultipartBody.Part?
+    ): Call<com.example.darli.data.model.GeneralResponse>
 }
