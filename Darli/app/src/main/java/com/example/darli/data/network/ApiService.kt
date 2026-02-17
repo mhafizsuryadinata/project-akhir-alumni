@@ -124,4 +124,10 @@ interface ApiService {
         @retrofit2.http.Part("description") description: okhttp3.RequestBody,
         @retrofit2.http.Part image: okhttp3.MultipartBody.Part?
     ): Call<com.example.darli.data.model.GeneralResponse>
+    @retrofit2.http.Multipart
+    @retrofit2.http.POST("update_photo")
+    fun updateProfilePhoto(
+        @retrofit2.http.Part("id_user") idUser: okhttp3.RequestBody,
+        @retrofit2.http.Part foto: okhttp3.MultipartBody.Part
+    ): Call<com.example.darli.data.model.AlumniUpdateResponse>
 }

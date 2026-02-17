@@ -18,13 +18,36 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import androidx.activity.result.contract.ActivityResultContracts
+import android.net.Uri
+import androidx.appcompat.app.AlertDialog
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
+import java.io.File
+import java.io.FileOutputStream
+
 class AkunFragment : Fragment() {
+
+    private lateinit var imagePickerLauncher: androidx.activity.result.ActivityResultLauncher<String>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_akun, container, false)
+        
+        imagePickerLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+            uri?.let {
+                uploadPhoto(view, it)
+            }
+        }
+
         setupViews(view)
         return view
     }
@@ -61,7 +84,7 @@ class AkunFragment : Fragment() {
         }
 
         view.findViewById<Button>(R.id.btnChangePhoto).setOnClickListener {
-            Toast.makeText(context, "Fitur ini akan segera hadir", Toast.LENGTH_SHORT).show()
+            showPhotoSourceDialog()
         }
 
         view.findViewById<Button>(R.id.btnShareProfile).setOnClickListener {
@@ -118,16 +141,16 @@ class AkunFragment : Fragment() {
     }
 
     private fun saveProfile(view: View, userId: String) {
-        val name = view.findViewById<EditText>(R.id.etName).text.toString()
-        val address = view.findViewById<EditText>(R.id.etAddress).text.toString()
-        val phone = view.findViewById<EditText>(R.id.etPhone).text.toString()
-        val job = view.findViewById<EditText>(R.id.etJob).text.toString()
-        val email = view.findViewById<EditText>(R.id.etEmail).text.toString()
-        val location = view.findViewById<EditText>(R.id.etLocation).text.toString()
-        val bio = view.findViewById<EditText>(R.id.etBio).text.toString()
-        val instagram = view.findViewById<EditText>(R.id.etInstagram).text.toString()
-        val linkedin = view.findViewById<EditText>(R.id.etLinkedin).text.toString()
-        val education = view.findViewById<EditText>(R.id.etEducation).text.toString()
+        val name = view.findViewById<EditText>(R.id.etName).text.toString().trim()
+        val address = view.findViewById<EditText>(R.id.etAddress).text.toString().trim()
+        val phone = view.findViewById<EditText>(R.id.etPhone).text.toString().trim()
+        val job = view.findViewById<EditText>(R.id.etJob).text.toString().trim()
+        val email = view.findViewById<EditText>(R.id.etEmail).text.toString().trim()
+        val location = view.findViewById<EditText>(R.id.etLocation).text.toString().trim()
+        val bio = view.findViewById<EditText>(R.id.etBio).text.toString().trim()
+        val instagram = view.findViewById<EditText>(R.id.etInstagram).text.toString().trim()
+        val linkedin = view.findViewById<EditText>(R.id.etLinkedin).text.toString().trim()
+        val education = view.findViewById<EditText>(R.id.etEducation).text.toString().trim()
 
         ApiClient.instance.updateProfile(
             userId, name, address, phone, job, location, email, bio, instagram, linkedin, education
@@ -179,7 +202,10 @@ class AkunFragment : Fragment() {
 
         val profileImage = view.findViewById<CircleImageView>(R.id.profileImageAkun)
         if (!photo.isNullOrEmpty()) {
-            val finalUrl = photo.replace("localhost", "10.0.2.2").replace("127.0.0.1", "10.0.2.2")
+            var finalUrl = photo.replace("localhost", "10.0.2.2").replace("127.0.0.1", "10.0.2.2")
+            if (!finalUrl.startsWith("http")) {
+                finalUrl = "http://10.0.2.2:8000/" + finalUrl
+            }
             Glide.with(this)
                 .load(finalUrl)
                 .placeholder(R.drawable.ic_profile_placeholder)
@@ -187,4 +213,91 @@ class AkunFragment : Fragment() {
                 .into(profileImage)
         }
     }
+    private fun showPhotoSourceDialog() {
+        val options = arrayOf("Galeri", "Google Drive / File Lainnya")
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Pilih Sumber Foto")
+        builder.setItems(options) { _, which ->
+            when (which) {
+                0 -> imagePickerLauncher.launch("image/*")
+                1 -> imagePickerLauncher.launch("*/*") // Open general picker for Drive/Files
+            }
+        }
+        builder.show()
+    }
+
+    private fun uploadPhoto(view: View, uri: Uri) {
+        val sessionManager = SessionManager(requireContext())
+        val userId = sessionManager.getUserId().toString()
+
+        // Use lifecycleScope to run in background
+        lifecycleScope.launch(Dispatchers.IO) {
+            val file = uriToFile(uri)
+            
+            withContext(Dispatchers.Main) {
+                if (file == null) {
+                    Toast.makeText(context, "Gagal memproses gambar", Toast.LENGTH_SHORT).show()
+                    return@withContext
+                }
+
+                val requestFile = file.asRequestBody("image/*".toMediaTypeOrNull())
+                val body = MultipartBody.Part.createFormData("foto", file.name, requestFile)
+                val userIdPart = userId.toRequestBody("text/plain".toMediaTypeOrNull())
+
+                Toast.makeText(context, "Mengunggah foto...", Toast.LENGTH_SHORT).show()
+
+                ApiClient.instance.updateProfilePhoto(userIdPart, body).enqueue(object : Callback<com.example.darli.data.model.AlumniUpdateResponse> {
+                    override fun onResponse(call: Call<com.example.darli.data.model.AlumniUpdateResponse>, 
+                                          response: Response<com.example.darli.data.model.AlumniUpdateResponse>) {
+                        if (response.isSuccessful && response.body()?.responseCode == 200) {
+                            Toast.makeText(context, "Foto profil berhasil diperbarui", Toast.LENGTH_SHORT).show()
+                            val updatedAlumni = response.body()?.content
+                            updatedAlumni?.let { it ->
+                                updateUI(view, it.name ?: "", it.batch ?: "", it.email ?: "", 
+                                         it.contact ?: "", it.profession ?: "", it.location ?: "", 
+                                         it.address ?: "", it.imageUrl ?: "", 
+                                         it.yearIn ?: "", it.yearOut ?: "", it.bio ?: "",
+                                         it.instagram ?: "", it.linkedin ?: "", it.education ?: "")
+                                
+                                sessionManager.updateUserDetails(
+                                    it.name, it.batch, it.imageUrl, it.email, 
+                                    it.contact, it.profession, it.location, it.address,
+                                    it.bio, it.instagram, it.linkedin, it.education
+                                )
+                            }
+                        } else {
+                            val msg = response.body()?.message ?: "Gagal memperbarui foto"
+                            Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<com.example.darli.data.model.AlumniUpdateResponse>, t: Throwable) {
+                        Toast.makeText(context, "Kesalahan jaringan: ${t.message}", Toast.LENGTH_SHORT).show()
+                    }
+                })
+            }
+        }
+    }
+
+    private fun uriToFile(uri: Uri): File? {
+        val context = requireContext()
+        // Use a unique name to avoid conflicts
+        val filename = "profile_${System.currentTimeMillis()}.jpg"
+        val file = File(context.cacheDir, filename)
+        
+        try {
+            val inputStream = context.contentResolver.openInputStream(uri) ?: return null
+            val outputStream = FileOutputStream(file)
+            inputStream.use { input ->
+                outputStream.use { output ->
+                    input.copyTo(output)
+                }
+            }
+            return file
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return null
+        }
+    }
 }
+

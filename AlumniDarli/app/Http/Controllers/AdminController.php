@@ -195,7 +195,7 @@ class AdminController extends Controller
     
     public function daftarEvent()
     {
-        $events = \App\Models\Event::with('user')->orderBy('date', 'desc')->get();
+        $events = \App\Models\Event::with('user')->orderBy('created_at', 'desc')->get();
         
         // Hitung statistik
         $totalEvents = \App\Models\Event::count();

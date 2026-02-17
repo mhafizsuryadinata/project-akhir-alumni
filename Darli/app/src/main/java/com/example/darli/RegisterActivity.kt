@@ -20,6 +20,7 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import androidx.appcompat.app.AlertDialog
 import java.io.File
 import java.io.FileOutputStream
 
@@ -29,9 +30,9 @@ class RegisterActivity : AppCompatActivity() {
     private var userId: Int = -1
     private var currentStep = 1
 
-    private val selectImageLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            imageUri = result.data?.data
+    private val selectImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+        uri?.let {
+            imageUri = it
             binding.profileImage.setImageURI(imageUri)
         }
     }
@@ -104,15 +105,11 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         binding.btnSelectImage.setOnClickListener {
-            val intent = Intent(Intent.ACTION_PICK)
-            intent.type = "image/*"
-            selectImageLauncher.launch(intent)
+            showPhotoSourceDialog()
         }
 
         binding.profileImage.setOnClickListener {
-            val intent = Intent(Intent.ACTION_PICK)
-            intent.type = "image/*"
-            selectImageLauncher.launch(intent)
+            showPhotoSourceDialog()
         }
 
         binding.btnNext.setOnClickListener {
@@ -127,6 +124,19 @@ class RegisterActivity : AppCompatActivity() {
                 uploadData()
             }
         }
+    }
+
+    private fun showPhotoSourceDialog() {
+        val options = arrayOf("Galeri", "Google Drive / File Lainnya")
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Pilih Sumber Foto")
+        builder.setItems(options) { _, which ->
+            when (which) {
+                0 -> selectImageLauncher.launch("image/*")
+                1 -> selectImageLauncher.launch("*/*") // Full picker for Drive/Files
+            }
+        }
+        builder.show()
     }
 
     private fun updateUIForStep() {
@@ -210,18 +220,18 @@ class RegisterActivity : AppCompatActivity() {
         val apiService = ApiConfig.getApiService()
 
         val idUserBody = userId.toString().toRequestBody("text/plain".toMediaTypeOrNull())
-        val namaBody = binding.etFullName.text.toString().toRequestBody("text/plain".toMediaTypeOrNull())
-        val alamatBody = binding.etAlamat.text.toString().toRequestBody("text/plain".toMediaTypeOrNull())
-        val noHpBody = binding.etWhatsapp.text.toString().toRequestBody("text/plain".toMediaTypeOrNull())
-        val pekerjaanBody = binding.etPekerjaan.text.toString().toRequestBody("text/plain".toMediaTypeOrNull())
-        val lokasiBody = binding.etLokasi.text.toString().toRequestBody("text/plain".toMediaTypeOrNull())
-        val emailBody = binding.etEmail.text.toString().toRequestBody("text/plain".toMediaTypeOrNull())
-        val bioBody = (binding.etBio.text.toString()).toRequestBody("text/plain".toMediaTypeOrNull())
-        val instagramBody = binding.etInstagram.text.toString().toRequestBody("text/plain".toMediaTypeOrNull())
-        val linkedinBody = binding.etLinkedIn.text.toString().toRequestBody("text/plain".toMediaTypeOrNull())
-        val pendidikanLanjutanBody = binding.etPendidikanLanjutan.text.toString().toRequestBody("text/plain".toMediaTypeOrNull())
-        val tahunMasukBody = intent.getStringExtra("USER_YEAR_IN")?.toRequestBody("text/plain".toMediaTypeOrNull()) ?: "".toRequestBody("text/plain".toMediaTypeOrNull())
-        val tahunTamatBody = intent.getStringExtra("USER_YEAR_OUT")?.toRequestBody("text/plain".toMediaTypeOrNull()) ?: "".toRequestBody("text/plain".toMediaTypeOrNull())
+        val namaBody = binding.etFullName.text.toString().trim().toRequestBody("text/plain".toMediaTypeOrNull())
+        val alamatBody = binding.etAlamat.text.toString().trim().toRequestBody("text/plain".toMediaTypeOrNull())
+        val noHpBody = binding.etWhatsapp.text.toString().trim().toRequestBody("text/plain".toMediaTypeOrNull())
+        val pekerjaanBody = binding.etPekerjaan.text.toString().trim().toRequestBody("text/plain".toMediaTypeOrNull())
+        val lokasiBody = binding.etLokasi.text.toString().trim().toRequestBody("text/plain".toMediaTypeOrNull())
+        val emailBody = binding.etEmail.text.toString().trim().toRequestBody("text/plain".toMediaTypeOrNull())
+        val bioBody = (binding.etBio.text.toString().trim()).toRequestBody("text/plain".toMediaTypeOrNull())
+        val instagramBody = binding.etInstagram.text.toString().trim().toRequestBody("text/plain".toMediaTypeOrNull())
+        val linkedinBody = binding.etLinkedIn.text.toString().trim().toRequestBody("text/plain".toMediaTypeOrNull())
+        val pendidikanLanjutanBody = binding.etPendidikanLanjutan.text.toString().trim().toRequestBody("text/plain".toMediaTypeOrNull())
+        val tahunMasukBody = (intent.getStringExtra("USER_YEAR_IN") ?: "").trim().toRequestBody("text/plain".toMediaTypeOrNull())
+        val tahunTamatBody = (intent.getStringExtra("USER_YEAR_OUT") ?: "").trim().toRequestBody("text/plain".toMediaTypeOrNull())
 
         var imageMultipart: MultipartBody.Part? = null
         imageUri?.let { uri ->

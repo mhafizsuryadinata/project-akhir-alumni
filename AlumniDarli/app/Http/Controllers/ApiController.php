@@ -43,11 +43,23 @@ class ApiController extends Controller
         }
 
         if ($user->role === 'alumni') {
-            // Pastikan is_complete dikirim
+            $userData = $user->toArray();
+            
+            // Ensure foto and profile are full URLs for Android consistency
+            if ($user->foto && !str_starts_with($user->foto, 'http')) {
+                // If path starts with storage/, don't double it
+                $path = str_starts_with($user->foto, 'storage/') ? $user->foto : 'storage/' . $user->foto;
+                $userData['foto'] = asset($path);
+            }
+            if ($user->profile && !str_starts_with($user->profile, 'http')) {
+                $path = str_starts_with($user->profile, 'storage/') ? $user->profile : 'storage/' . $user->profile;
+                $userData['profile'] = asset($path);
+            }
+
             return response()->json([
                 'response_code' => 200,
                 'message' => 'Login berhasil sebagai Alumni',
-                'content' => $user
+                'content' => $userData
             ]);
         }
 
@@ -74,7 +86,7 @@ class ApiController extends Controller
             'pendidikan_lanjutan' => 'nullable|string',
             'tahun_masuk' => 'nullable|string',
             'tahun_tamat' => 'nullable|string',
-            'file' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'file' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:10240'
         ]);
 
         if ($validator->fails()) {
@@ -111,17 +123,35 @@ class ApiController extends Controller
         if ($request->hasFile('file')) {
             $file = $request->file('file');
             $filename = time() . '_' . $file->getClientOriginalName();
-            // Simpan di folder public/uploads/profile
-            $file->move(public_path('uploads/profile'), $filename);
+            // Simpan di folder storage/app/public/uploads/profile
+            $file->move(storage_path('app/public/uploads/profile'), $filename);
             $user->foto = 'uploads/profile/' . $filename;
         }
 
         $user->save();
 
+        $userData = [
+            'id' => (string) $user->id_user,
+            'name' => $user->nama,
+            'batch' => ($user->tahun_masuk ?? '?') . ' - ' . ($user->tahun_tamat ?? '?'),
+            'year_in' => (string) $user->tahun_masuk,
+            'year_out' => (string) $user->tahun_tamat,
+            'profession' => $user->pekerjaan,
+            'location' => $user->lokasi,
+            'bio' => $user->bio,
+            'instagram' => $user->instagram,
+            'linkedin' => $user->linkedin,
+            'education' => $user->pendidikan_lanjutan,
+            'email' => $user->email,
+            'contact' => $user->no_hp,
+            'address' => $user->alamat,
+            'imageUrl' => $user->foto ? asset('storage/' . $user->foto) : null
+        ];
+
         return response()->json([
             'response_code' => 200,
             'message' => 'Profil berhasil diperbarui',
-            'content' => $user
+            'content' => $userData
         ]);
     }
 
@@ -199,7 +229,7 @@ class ApiController extends Controller
                 'id' => $comment->id,
                 'user_id' => $comment->user_id,
                 'user_name' => $comment->user->nama ?? 'Alumni',
-                'user_photo' => $comment->user->foto ?? null,
+                'user_photo' => $comment->user->foto ? (str_starts_with($comment->user->foto, 'http') ? $comment->user->foto : asset('storage/' . $comment->user->foto)) : null,
                 'content' => $comment->content,
                 'rating' => $comment->rating,
                 'status' => $comment->status,
@@ -651,7 +681,7 @@ class ApiController extends Controller
 
         $imagePath = null;
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('uploads/events', 'public');
+            $imagePath = $request->file('image')->store('events', 'public');
         }
 
         $event = \App\Models\Event::create([
@@ -674,4 +704,60 @@ class ApiController extends Controller
             'content' => $event
         ]);
     }
+    public function update_photo(Request $request)
+    {
+        $validator = \Illuminate\Support\Facades\Validator::make($request->all(), [
+            'id_user' => 'required|exists:users,id_user',
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:10240'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'response_code' => 400,
+                'message' => 'Validasi gagal',
+                'errors' => $validator->errors()
+            ]);
+        }
+
+        $user = User::find($request->id_user);
+
+        if ($request->hasFile('foto')) {
+            $file = $request->file('foto');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            // Simpan di folder storage/app/public/uploads/profile
+            $file->move(storage_path('app/public/uploads/profile'), $filename);
+            $user->foto = 'uploads/profile/' . $filename;
+            $user->save();
+
+            $userData = [
+                'id' => (string) $user->id_user,
+                'name' => $user->nama,
+                'batch' => ($user->tahun_masuk ?? '?') . ' - ' . ($user->tahun_tamat ?? '?'),
+                'year_in' => (string) $user->tahun_masuk,
+                'year_out' => (string) $user->tahun_tamat,
+                'profession' => $user->pekerjaan,
+                'location' => $user->lokasi,
+                'bio' => $user->bio,
+                'instagram' => $user->instagram,
+                'linkedin' => $user->linkedin,
+                'education' => $user->pendidikan_lanjutan,
+                'email' => $user->email,
+                'contact' => $user->no_hp,
+                'address' => $user->alamat,
+                'imageUrl' => $user->foto ? asset('storage/' . $user->foto) : null
+            ];
+            
+            return response()->json([
+                'response_code' => 200,
+                'message' => 'Foto profil berhasil diperbarui',
+                'content' => $userData
+            ]);
+        }
+
+        return response()->json([
+            'response_code' => 400,
+            'message' => 'File tidak ditemukan'
+        ]);
+    }
+
 }

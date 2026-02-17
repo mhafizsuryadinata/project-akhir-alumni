@@ -51,18 +51,10 @@ class CommentAdapter(
              }
 
              val baseUrl = "http://10.0.2.2:8000/" 
-             var finalUrl = ""
-
-             if (photoPath.startsWith("http")) {
-                 finalUrl = photoPath
+             var finalUrl = if (photoPath.startsWith("http")) {
+                 photoPath
              } else {
-                 if (photoPath.startsWith("uploads/profile/")) {
-                     // API Upload -> public/uploads/profile/ -> Direct access
-                     finalUrl = baseUrl + photoPath
-                 } else {
-                     // Web Upload -> storage/app/public/uploads/ -> Needs storage/ prefix
-                     finalUrl = baseUrl + "storage/" + photoPath
-                 }
+                 baseUrl + photoPath
              }
 
              // Handle localhost for emulator

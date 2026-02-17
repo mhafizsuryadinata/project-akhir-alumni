@@ -90,7 +90,10 @@ class MenuFragment : Fragment() {
         view.findViewById<TextView>(R.id.tvUserName).text = name
         
         if (photoUrl.isNotEmpty()) {
-            val finalUrl = photoUrl.replace("localhost", "10.0.2.2").replace("127.0.0.1", "10.0.2.2")
+            var finalUrl = photoUrl.replace("localhost", "10.0.2.2").replace("127.0.0.1", "10.0.2.2")
+            if (!finalUrl.startsWith("http")) {
+                finalUrl = "http://10.0.2.2:8000/" + finalUrl
+            }
             Glide.with(this)
                 .load(finalUrl)
                 .placeholder(R.drawable.ic_profile_placeholder)

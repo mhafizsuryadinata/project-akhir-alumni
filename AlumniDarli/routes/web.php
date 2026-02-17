@@ -281,7 +281,3 @@ Route::middleware(['auth'])->group(function () {
 Route::post('/contact/send', [\App\Http\Controllers\ContactController::class, 'send'])->name('kontak.kirim');
 
 
-Route::get('/debug-events', function() {
-    $events = \App\Models\Event::with('user')->orderBy('date', 'desc')->get();
-    return response()->json($events);
-});

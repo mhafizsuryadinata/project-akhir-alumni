@@ -37,3 +37,4 @@ Route::get('my_applications/{id_user}', [ApiController::class, 'getMyApplication
 Route::post('store_lowongan', [ApiController::class, 'storeLowongan']);
 Route::post('join_event', [ApiController::class, 'joinEvent']);
 Route::post('store_event', [ApiController::class, 'storeEvent']);
+Route::post('update_photo', [ApiController::class, 'update_photo']);
