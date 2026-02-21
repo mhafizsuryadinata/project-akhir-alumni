@@ -49,6 +49,11 @@ class GalleryFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.rvGallery)
         recyclerView.adapter = adapter
 
+        val fabNewAlbum = view.findViewById<ExtendedFloatingActionButton>(R.id.fabNewAlbum)
+        fabNewAlbum.setOnClickListener {
+            findNavController().navigate(R.id.addAlbumFragment)
+        }
+
         setupChips(view)
         fetchAlbums(view)
 

@@ -119,8 +119,7 @@ class MenuFragment : Fragment() {
             findNavController().navigate(R.id.commentListFragment)
         }
         view.findViewById<View>(R.id.cardHelp).setOnClickListener {
-            // Placeholder: Open WhatsApp or Contact Info
-             Toast.makeText(context, "Silakan hubungi Admin via WhatsApp.", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.helpFragment)
         }
         view.findViewById<View>(R.id.cardGallery).setOnClickListener {
             findNavController().navigate(R.id.galleryFragment)

@@ -169,4 +169,25 @@
             android:name="initial_position"
             app:argType="integer" />
     </fragment>
+
+    <fragment
+        android:id="@+id/addMediaFragment"
+        android:name="com.example.darli.AddMediaFragment"
+        android:label="Upload Media"
+        tools:layout="@layout/fragment_add_media">
+        <argument
+            android:name="album_id"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addAlbumFragment"
+        android:name="com.example.darli.AddAlbumFragment"
+        android:label="Tambah Album"
+        tools:layout="@layout/fragment_add_album" />
+    <fragment
+        android:id="@+id/helpFragment"
+        android:name="com.example.darli.HelpFragment"
+        android:label="Bantuan"
+        tools:layout="@layout/fragment_help" />
 </navigation>

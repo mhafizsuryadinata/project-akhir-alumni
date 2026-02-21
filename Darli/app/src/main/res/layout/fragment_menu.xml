@@ -555,7 +555,7 @@
                                 android:layout_width="22dp"
                                 android:layout_height="22dp"
                                 android:layout_gravity="center"
-                                android:src="@drawable/ic_info_circle"
+                                android:src="@drawable/ic_help_lifebuoy"
                                 app:tint="#EC4899" />
                         </FrameLayout>
 

@@ -888,4 +888,119 @@ class ApiController extends Controller
         ]);
     }
 
+    public function storeAlbum(Request $request)
+    {
+        $validator = \Illuminate\Support\Facades\Validator::make($request->all(), [
+            'id_user' => 'required|exists:users,id_user',
+            'nama_album' => 'required|string|max:255',
+            'kategori' => 'required|string',
+            'tahun' => 'nullable|string',
+            'deskripsi' => 'nullable|string',
+            'cover' => 'nullable|image|max:10240',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'response_code' => 400,
+                'message' => 'Validasi gagal',
+                'errors' => $validator->errors()
+            ]);
+        }
+
+        $coverPath = null;
+        if ($request->hasFile('cover')) {
+            $coverPath = $request->file('cover')->store('albums', 'public');
+        }
+
+        $album = \App\Models\Album::create([
+            'nama_album' => $request->nama_album,
+            'kategori' => $request->kategori,
+            'tahun' => $request->tahun,
+            'deskripsi' => $request->deskripsi,
+            'cover' => $coverPath,
+            'created_by' => $request->id_user,
+            'status_admin' => 'pending',
+            'status_pimpinan' => 'pending'
+        ]);
+
+        return response()->json([
+            'response_code' => 200,
+            'message' => 'Album berhasil dibuat dan menunggu persetujuan',
+            'content' => $album
+        ]);
+    }
+
+    public function getFaqs()
+    {
+        $data = \App\Models\Faq::orderBy('order')->get();
+        return response()->json([
+            'response_code' => 200,
+            'content' => $data->map(function($item) {
+                return [
+                    'id' => $item->id,
+                    'question' => $item->question,
+                    'answer' => $item->answer,
+                    'category' => $item->category,
+                ];
+            })
+        ]);
+    }
+
+    public function getMyMessages($id_user)
+    {
+        $messages = \App\Models\ContactMessage::where('user_id', $id_user)
+            ->latest()
+            ->get();
+
+        return response()->json([
+            'response_code' => 200,
+            'content' => $messages->map(function($item) {
+                return [
+                    'id' => $item->id,
+                    'subject' => $item->subject,
+                    'message' => $item->message,
+                    'attachment' => $item->attachment ? asset('storage/' . $item->attachment) : null,
+                    'admin_reply' => $item->admin_reply,
+                    'replied_at' => $item->replied_at ? $item->replied_at->format('d M Y H:i') : null,
+                    'created_at' => $item->created_at ? $item->created_at->format('d M Y H:i') : null,
+                ];
+            })
+        ]);
+    }
+
+    public function sendContactMessage(Request $request)
+    {
+        $validator = \Illuminate\Support\Facades\Validator::make($request->all(), [
+            'id_user' => 'required|exists:users,id_user',
+            'subject' => 'required|string',
+            'message' => 'required|string',
+            'attachment' => 'nullable|file|mimes:jpg,png,pdf,docx|max:5120',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'response_code' => 400,
+                'message' => 'Validasi gagal',
+                'errors' => $validator->errors()
+            ]);
+        }
+
+        $attachmentPath = null;
+        if ($request->hasFile('attachment')) {
+            $attachmentPath = $request->file('attachment')->store('contact_attachments', 'public');
+        }
+
+        \App\Models\ContactMessage::create([
+            'user_id' => $request->id_user,
+            'subject' => $request->subject,
+            'message' => $request->message,
+            'attachment' => $attachmentPath,
+        ]);
+
+        return response()->json([
+            'response_code' => 200,
+            'message' => 'Pesan berhasil dikirim!'
+        ]);
+    }
+
 }

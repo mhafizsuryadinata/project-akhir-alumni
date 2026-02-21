@@ -81,7 +81,7 @@ interface ApiService {
         @retrofit2.http.Part("tipe") tipe: okhttp3.RequestBody,
         @retrofit2.http.Part("deskripsi") deskripsi: okhttp3.RequestBody?,
         @retrofit2.http.Part file: okhttp3.MultipartBody.Part
-    ): Call<com.example.darli.data.model.AlbumMediaResponse>
+    ): Call<com.example.darli.data.model.GeneralResponse>
 
     @retrofit2.http.Multipart
     @retrofit2.http.POST("update_profile")
@@ -154,4 +154,30 @@ interface ApiService {
         @retrofit2.http.Part("id_user") idUser: okhttp3.RequestBody,
         @retrofit2.http.Part foto: okhttp3.MultipartBody.Part
     ): Call<com.example.darli.data.model.AlumniUpdateResponse>
+
+    @retrofit2.http.Multipart
+    @retrofit2.http.POST("store_album")
+    fun storeAlbum(
+        @retrofit2.http.Part("id_user") idUser: okhttp3.RequestBody,
+        @retrofit2.http.Part("nama_album") namaAlbum: okhttp3.RequestBody,
+        @retrofit2.http.Part("kategori") kategori: okhttp3.RequestBody,
+        @retrofit2.http.Part("tahun") tahun: okhttp3.RequestBody?,
+        @retrofit2.http.Part("deskripsi") deskripsi: okhttp3.RequestBody?,
+        @retrofit2.http.Part cover: okhttp3.MultipartBody.Part?
+    ): Call<com.example.darli.data.model.GeneralResponse>
+
+    @GET("faqs")
+    fun getFaqs(): Call<com.example.darli.data.model.FaqResponse>
+
+    @GET("my_messages/{id_user}")
+    fun getMyMessages(@Path("id_user") idUser: Int): Call<com.example.darli.data.model.ContactMessageResponse>
+
+    @retrofit2.http.Multipart
+    @retrofit2.http.POST("send_contact_message")
+    fun sendContactMessage(
+        @retrofit2.http.Part("id_user") idUser: okhttp3.RequestBody,
+        @retrofit2.http.Part("subject") subject: okhttp3.RequestBody,
+        @retrofit2.http.Part("message") message: okhttp3.RequestBody,
+        @retrofit2.http.Part attachment: okhttp3.MultipartBody.Part?
+    ): Call<com.example.darli.data.model.GeneralResponse>
 }

@@ -16,6 +16,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.setFragmentResultListener
 import androidx.recyclerview.widget.RecyclerView
 import com.example.darli.adapters.AlbumMediaAdapter
 import com.example.darli.data.network.ApiClient
@@ -57,7 +58,7 @@ class AlbumDetailFragment : Fragment() {
 
         view.findViewById<TextView>(R.id.tvAlbumName).text = albumName
         view.findViewById<ImageButton>(R.id.btnBack).setOnClickListener {
-            parentFragmentManager.popBackStack()
+            findNavController().navigateUp()
         }
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.rvMedia)
@@ -78,6 +79,13 @@ class AlbumDetailFragment : Fragment() {
 
         view.findViewById<ImageButton>(R.id.btnActionMenu).setOnClickListener {
             showActionMenu()
+        }
+
+        // Listen for upload success from AddMediaFragment to refresh list
+        setFragmentResultListener("upload_result") { _, bundle ->
+            if (bundle.getBoolean("refresh")) {
+                fetchMedia(view)
+            }
         }
 
         fetchMedia(view)
@@ -194,62 +202,9 @@ class AlbumDetailFragment : Fragment() {
     }
 
     private fun openPicker() {
-        val intent = Intent(Intent.ACTION_PICK)
-        intent.type = "*/*"
-        intent.putExtra(Intent.EXTRA_MIME_TYPES, arrayOf("image/*", "video/*"))
-        startActivityForResult(intent, PICK_IMAGE_VIDEO)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == PICK_IMAGE_VIDEO && resultCode == Activity.RESULT_OK) {
-            data?.data?.let { uri ->
-                uploadMedia(uri)
-            }
+        val bundle = Bundle().apply {
+            putInt("album_id", albumId)
         }
-    }
-
-    private fun uploadMedia(uri: Uri) {
-        val file = getFileFromUri(uri) ?: return
-        val mimeType = context?.contentResolver?.getType(uri) ?: "image/jpeg"
-        val tipe = if (mimeType.contains("video")) "video" else "foto"
-
-        val requestFile = file.asRequestBody(mimeType.toMediaTypeOrNull())
-        val body = MultipartBody.Part.createFormData("file", file.name, requestFile)
-        
-        val albumIdBody = albumId.toString().toRequestBody("text/plain".toMediaTypeOrNull())
-        val idUserBody = sessionManager.getUserId().toString().toRequestBody("text/plain".toMediaTypeOrNull())
-        val tipeBody = tipe.toRequestBody("text/plain".toMediaTypeOrNull())
-        val descBody = "Uploaded from app".toRequestBody("text/plain".toMediaTypeOrNull())
-
-        Toast.makeText(context, "Mengunggah...", Toast.LENGTH_SHORT).show()
-
-        ApiClient.instance.storeMedia(albumIdBody, idUserBody, tipeBody, descBody, body)
-            .enqueue(object : Callback<AlbumMediaResponse> {
-                override fun onResponse(call: Call<AlbumMediaResponse>, response: Response<AlbumMediaResponse>) {
-                    if (!isAdded) return
-                    if (response.isSuccessful) {
-                        Toast.makeText(context, "Upload berhasil! Menunggu moderasi.", Toast.LENGTH_LONG).show()
-                        fetchMedia(requireView())
-                    } else {
-                        Toast.makeText(context, "Gagal upload: ${response.code()}", Toast.LENGTH_SHORT).show()
-                    }
-                }
-
-                override fun onFailure(call: Call<AlbumMediaResponse>, t: Throwable) {
-                    if (!isAdded) return
-                    Toast.makeText(context, "Kesalahan upload: ${t.message}", Toast.LENGTH_SHORT).show()
-                }
-            })
-    }
-
-    private fun getFileFromUri(uri: Uri): File? {
-        val inputStream = context?.contentResolver?.openInputStream(uri) ?: return null
-        val file = File(context?.cacheDir, "upload_temp_" + System.currentTimeMillis())
-        val outputStream = FileOutputStream(file)
-        inputStream.copyTo(outputStream)
-        outputStream.close()
-        inputStream.close()
-        return file
+        findNavController().navigate(R.id.addMediaFragment, bundle)
     }
 }
