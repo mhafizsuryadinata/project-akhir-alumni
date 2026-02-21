@@ -63,19 +63,43 @@ interface ApiService {
 
     @GET("get_galeri")
     fun getGallery(): Call<com.example.darli.data.model.GalleryResponse>
+
+    @GET("get_albums")
+    fun getAlbums(): Call<com.example.darli.data.model.AlbumResponse>
+
+    @GET("album/{id}/media")
+    fun getAlbumMedia(
+        @Path("id") id: Int,
+        @retrofit2.http.Query("id_user") idUser: String?
+    ): Call<com.example.darli.data.model.AlbumMediaResponse>
+
+    @retrofit2.http.Multipart
+    @retrofit2.http.POST("store_media")
+    fun storeMedia(
+        @retrofit2.http.Part("album_id") albumId: okhttp3.RequestBody,
+        @retrofit2.http.Part("id_user") idUser: okhttp3.RequestBody,
+        @retrofit2.http.Part("tipe") tipe: okhttp3.RequestBody,
+        @retrofit2.http.Part("deskripsi") deskripsi: okhttp3.RequestBody?,
+        @retrofit2.http.Part file: okhttp3.MultipartBody.Part
+    ): Call<com.example.darli.data.model.AlbumMediaResponse>
+
+    @retrofit2.http.Multipart
     @retrofit2.http.POST("update_profile")
     fun updateProfile(
-        @retrofit2.http.Field("id_user") idUser: String,
-        @retrofit2.http.Field("nama") nama: String,
-        @retrofit2.http.Field("alamat") alamat: String,
-        @retrofit2.http.Field("no_hp") noHp: String,
-        @retrofit2.http.Field("pekerjaan") pekerjaan: String,
-        @retrofit2.http.Field("lokasi") lokasi: String,
-        @retrofit2.http.Field("email") email: String,
-        @retrofit2.http.Field("bio") bio: String,
-        @retrofit2.http.Field("instagram") instagram: String,
-        @retrofit2.http.Field("linkedin") linkedin: String,
-        @retrofit2.http.Field("pendidikan_lanjutan") pendidikanLanjutan: String
+        @retrofit2.http.Part("id_user") idUser: okhttp3.RequestBody,
+        @retrofit2.http.Part("nama") nama: okhttp3.RequestBody,
+        @retrofit2.http.Part("alamat") alamat: okhttp3.RequestBody,
+        @retrofit2.http.Part("no_hp") noHp: okhttp3.RequestBody,
+        @retrofit2.http.Part("pekerjaan") pekerjaan: okhttp3.RequestBody,
+        @retrofit2.http.Part("lokasi") lokasi: okhttp3.RequestBody,
+        @retrofit2.http.Part("email") email: okhttp3.RequestBody,
+        @retrofit2.http.Part("bio") bio: okhttp3.RequestBody,
+        @retrofit2.http.Part("instagram") instagram: okhttp3.RequestBody,
+        @retrofit2.http.Part("linkedin") linkedin: okhttp3.RequestBody,
+        @retrofit2.http.Part("pendidikan_lanjutan") pendidikanLanjutan: okhttp3.RequestBody,
+        @retrofit2.http.Part("tahun_masuk") tahunMasuk: okhttp3.RequestBody,
+        @retrofit2.http.Part("tahun_tamat") tahunTamat: okhttp3.RequestBody,
+        @retrofit2.http.Part file: okhttp3.MultipartBody.Part?
     ): Call<com.example.darli.data.model.AlumniUpdateResponse>
 
     @retrofit2.http.Multipart

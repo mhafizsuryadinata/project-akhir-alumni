@@ -38,3 +38,6 @@ Route::post('store_lowongan', [ApiController::class, 'storeLowongan']);
 Route::post('join_event', [ApiController::class, 'joinEvent']);
 Route::post('store_event', [ApiController::class, 'storeEvent']);
 Route::post('update_photo', [ApiController::class, 'update_photo']);
+Route::get('get_albums', [ApiController::class, 'getAlbums']);
+Route::get('album/{id}/media', [ApiController::class, 'getAlbumMedia']);
+Route::post('store_media', [ApiController::class, 'storeMedia']);

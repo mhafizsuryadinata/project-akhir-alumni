@@ -72,6 +72,11 @@ class ApiController extends Controller
 
     public function update_profile(Request $request)
     {
+        // Trim inputs to avoid validation errors from trailing spaces
+        if ($request->has('email')) {
+            $request->merge(['email' => trim($request->email)]);
+        }
+
         $validator = \Illuminate\Support\Facades\Validator::make($request->all(), [
             'id_user' => 'required|exists:users,id_user',
             'nama' => 'required|string',
@@ -354,6 +359,129 @@ class ApiController extends Controller
                     'created_at' => $item->created_at ? \Carbon\Carbon::parse($item->created_at)->format('d M Y') : '-'
                 ];
             })
+        ]);
+    }
+
+    public function getAlbums()
+    {
+        $albums = \DB::table('album')
+            ->where('status_admin', 'approved')
+            ->where('status_pimpinan', 'approved')
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        $data = $albums->map(function($album) {
+            $photoCount = \DB::table('galeri')
+                ->where('album_id', $album->id)
+                ->whereIn('tipe', ['foto', 'photo'])
+                ->where('status_admin', 'approved')
+                ->where('status_pimpinan', 'approved')
+                ->count();
+
+            $videoCount = \DB::table('galeri')
+                ->where('album_id', $album->id)
+                ->where('tipe', 'video')
+                ->where('status_admin', 'approved')
+                ->where('status_pimpinan', 'approved')
+                ->count();
+
+            $coverUrl = null;
+            if ($album->cover) {
+                $coverUrl = str_starts_with($album->cover, 'http')
+                    ? $album->cover
+                    : (str_starts_with($album->cover, 'storage/')
+                        ? asset($album->cover)
+                        : asset('storage/' . $album->cover));
+            }
+
+            return [
+                'id' => $album->id,
+                'nama_album' => $album->nama_album,
+                'deskripsi' => $album->deskripsi,
+                'tahun' => $album->tahun,
+                'kategori' => $album->kategori,
+                'cover_url' => $coverUrl,
+                'photo_count' => $photoCount,
+                'video_count' => $videoCount,
+            ];
+        });
+
+        return response()->json([
+            'response_code' => 200,
+            'content' => $data
+        ]);
+    }
+
+    public function getAlbumMedia(Request $request, $id)
+    {
+        $id_user = $request->query('id_user');
+        
+        $media = \DB::table('galeri')
+            ->where('album_id', $id)
+            ->where(function($query) use ($id_user) {
+                $query->where(function($q) {
+                    $q->where('status_admin', 'approved')
+                      ->where('status_pimpinan', 'approved');
+                });
+                if ($id_user) {
+                    $query->orWhere('uploaded_by', $id_user);
+                }
+            })
+            ->latest()
+            ->get();
+
+        return response()->json([
+            'response_code' => 200,
+            'content' => $media->map(function($item) {
+                return [
+                    'id' => $item->id,
+                    'album_id' => $item->album_id,
+                    'file_path' => asset('storage/' . $item->file_path),
+                    'tipe' => $item->tipe,
+                    'deskripsi' => $item->deskripsi,
+                    'status_admin' => $item->status_admin,
+                    'status_pimpinan' => $item->status_pimpinan,
+                    'created_at' => $item->created_at ? \Carbon\Carbon::parse($item->created_at)->format('d M Y') : '-'
+                ];
+            })
+        ]);
+    }
+
+    public function storeMedia(Request $request)
+    {
+        $validator = \Illuminate\Support\Facades\Validator::make($request->all(), [
+            'album_id' => 'required|exists:album,id',
+            'id_user' => 'required|exists:users,id_user',
+            'tipe' => 'required|in:foto,photo,video',
+            'file' => 'required|file|max:20480', // 20MB
+            'deskripsi' => 'nullable|string'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'response_code' => 400,
+                'message' => 'Validasi gagal',
+                'errors' => $validator->errors()
+            ]);
+        }
+
+        $file = $request->file('file');
+        $path = $file->store('galeri/' . $request->album_id, 'public');
+
+        $media = \App\Models\Galeri::create([
+            'album_id' => $request->album_id,
+            'file_path' => $path,
+            'tipe' => $request->tipe,
+            'deskripsi' => $request->deskripsi,
+            'uploaded_by' => $request->id_user,
+            'status_admin' => 'pending',
+            'status_pimpinan' => 'pending'
+        ]);
+
+        return response()->json([
+            'response_code' => 200,
+            'message' => 'Media berhasil diupload dan menunggu persetujuan',
+            'content' => $media
         ]);
     }
 

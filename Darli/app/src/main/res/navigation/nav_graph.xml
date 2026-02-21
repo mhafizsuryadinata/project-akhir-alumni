@@ -150,4 +150,23 @@
         android:name="com.example.darli.AddEventFragment"
         android:label="Tambah Acara"
         tools:layout="@layout/fragment_add_event" />
+
+    <fragment
+        android:id="@+id/albumDetailFragment"
+        android:name="com.example.darli.AlbumDetailFragment"
+        android:label="Album Detail"
+        tools:layout="@layout/fragment_album_detail" />
+
+    <fragment
+        android:id="@+id/mediaSliderFragment"
+        android:name="com.example.darli.MediaSliderFragment"
+        android:label="Media Slider"
+        tools:layout="@layout/fragment_media_slider">
+        <argument
+            android:name="media_list"
+            app:argType="string" />
+        <argument
+            android:name="initial_position"
+            app:argType="integer" />
+    </fragment>
 </navigation>

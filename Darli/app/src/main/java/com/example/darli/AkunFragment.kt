@@ -152,8 +152,28 @@ class AkunFragment : Fragment() {
         val linkedin = view.findViewById<EditText>(R.id.etLinkedin).text.toString().trim()
         val education = view.findViewById<EditText>(R.id.etEducation).text.toString().trim()
 
+        val sessionManager = SessionManager(requireContext())
+        val userDetails = sessionManager.getUserDetails()
+        val yearIn = userDetails["year_in"] ?: ""
+        val yearOut = userDetails["year_out"] ?: ""
+
+        val idUserBody = userId.toRequestBody("text/plain".toMediaTypeOrNull())
+        val namaBody = name.toRequestBody("text/plain".toMediaTypeOrNull())
+        val alamatBody = address.toRequestBody("text/plain".toMediaTypeOrNull())
+        val noHpBody = phone.toRequestBody("text/plain".toMediaTypeOrNull())
+        val pekerjaanBody = job.toRequestBody("text/plain".toMediaTypeOrNull())
+        val lokasiBody = location.toRequestBody("text/plain".toMediaTypeOrNull())
+        val emailBody = email.toRequestBody("text/plain".toMediaTypeOrNull())
+        val bioBody = bio.toRequestBody("text/plain".toMediaTypeOrNull())
+        val instagramBody = instagram.toRequestBody("text/plain".toMediaTypeOrNull())
+        val linkedinBody = linkedin.toRequestBody("text/plain".toMediaTypeOrNull())
+        val educationBody = education.toRequestBody("text/plain".toMediaTypeOrNull())
+        val yearInBody = yearIn.toRequestBody("text/plain".toMediaTypeOrNull())
+        val yearOutBody = yearOut.toRequestBody("text/plain".toMediaTypeOrNull())
+
         ApiClient.instance.updateProfile(
-            userId, name, address, phone, job, location, email, bio, instagram, linkedin, education
+            idUserBody, namaBody, alamatBody, noHpBody, pekerjaanBody, lokasiBody, emailBody, bioBody, 
+            instagramBody, linkedinBody, educationBody, yearInBody, yearOutBody, null
         ).enqueue(object : Callback<com.example.darli.data.model.AlumniUpdateResponse> {
             override fun onResponse(call: Call<com.example.darli.data.model.AlumniUpdateResponse>, 
                                   response: Response<com.example.darli.data.model.AlumniUpdateResponse>) {
@@ -163,17 +183,26 @@ class AkunFragment : Fragment() {
                         val sessionManager = SessionManager(requireContext())
                         sessionManager.updateUserDetails(
                             it.name, it.batch, it.imageUrl, it.email, 
-                            it.contact, it.profession, it.location, it.location,
+                            it.contact, it.profession, it.location, it.address,
                             it.bio, it.instagram, it.linkedin, it.education
                         )
                     }
                 } else {
-                    Toast.makeText(context, "Gagal memperbarui profil", Toast.LENGTH_SHORT).show()
+                    val errorBody = response.errorBody()?.string() ?: response.body()?.toString()
+                    android.util.Log.e("AkunFragment", "Update failed: code=${response.code()} body=$errorBody")
+                    val errorMsg = try {
+                        val json = org.json.JSONObject(errorBody ?: "")
+                        json.optString("message", "Gagal memperbarui profil")
+                    } catch (e: Exception) {
+                        "Gagal memperbarui profil (${response.code()})"
+                    }
+                    Toast.makeText(context, errorMsg, Toast.LENGTH_LONG).show()
                 }
             }
 
             override fun onFailure(call: Call<com.example.darli.data.model.AlumniUpdateResponse>, t: Throwable) {
-                Toast.makeText(context, "Terjadi kesalahan jaringan", Toast.LENGTH_SHORT).show()
+                android.util.Log.e("AkunFragment", "Network error", t)
+                Toast.makeText(context, "Terjadi kesalahan jaringan: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
     }

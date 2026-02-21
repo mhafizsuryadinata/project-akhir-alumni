@@ -153,7 +153,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:text="Unggah Foto Profil"
+                        android:text="Unggah Foto Profil (Opsional)"
                         android:textColor="#4FACFE"
                         android:textStyle="bold" />
                 </LinearLayout>
