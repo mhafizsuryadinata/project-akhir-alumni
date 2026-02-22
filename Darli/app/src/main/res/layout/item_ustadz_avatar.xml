@@ -3,34 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="16dp"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingHorizontal="12dp">
 
     <RelativeLayout
-        android:layout_width="70dp"
-        android:layout_height="70dp">
+        android:layout_width="72dp"
+        android:layout_height="72dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/ivUstadzPhoto"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_centerInParent="true"
-            android:src="@drawable/ic_person"
-            app:civ_border_color="#F1F5F9"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_profile_placeholder"
+            app:civ_border_color="@color/border_subtle"
             app:civ_border_width="2dp" />
 
         <ImageView
-            android:id="@+id/btnWhatsapp"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginBottom="4dp"
-            android:layout_marginEnd="4dp"
-            android:background="@drawable/bg_stat_icon_green"
+            android:background="@drawable/bg_icon_settings_circle"
             android:padding="4dp"
-            android:src="@drawable/ic_whatsapp"
+            android:src="@drawable/ic_check_circle"
             app:tint="@color/white" />
     </RelativeLayout>
 
@@ -39,18 +35,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:ellipsize="end"
+        android:text="Nama Ustadz"
+        android:textColor="@color/text_heading"
+        android:textSize="13sp"
+        android:textStyle="bold"
         android:maxLines="1"
-        android:text="Ust. Ahmad"
-        android:textColor="#1E293B"
-        android:textSize="12sp"
-        android:textStyle="bold" />
+        android:ellipsize="end" />
 
     <TextView
         android:id="@+id/tvUstadzRole"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fiqh Expert"
-        android:textColor="#94A3B8"
-        android:textSize="10sp" />
+        android:text="Pengajar"
+        android:textColor="@color/text_body_secondary"
+        android:textSize="11sp" />
+
 </LinearLayout>

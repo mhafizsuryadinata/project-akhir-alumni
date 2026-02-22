@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/bg_circle_blue_light" />
+            android:src="@color/border_subtle" />
 
         <View
             android:layout_width="match_parent"

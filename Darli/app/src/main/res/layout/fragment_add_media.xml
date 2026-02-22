@@ -3,27 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#80000000">
+    android:background="@drawable/bg_gradient_black_overlay">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="24dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="8dp">
+        app:cardBackgroundColor="@color/bg_card"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="8dp"
+        app:strokeColor="@color/border_subtle"
+        app:strokeWidth="1dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="24dp">
 
             <!-- Header -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp">
+                android:layout_marginBottom="24dp">
 
                 <ImageView
                     android:id="@+id/ivHeaderIcon"
@@ -32,16 +35,16 @@
                     android:src="@drawable/ic_gallery"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
-                    app:tint="#4A5568" />
+                    app:tint="@color/web_primary" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/ivHeaderIcon"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="12dp"
                     android:layout_centerVertical="true"
                     android:text="Upload Media"
-                    android:textColor="#2D3748"
+                    android:textColor="@color/text_heading"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -53,7 +56,7 @@
                     android:layout_centerVertical="true"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:src="@drawable/ic_close"
-                    app:tint="#A0AEC0" />
+                    app:tint="@color/text_body_secondary" />
             </RelativeLayout>
 
             <!-- Upload Area -->
@@ -62,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:background="@drawable/bg_dashed_border"
-                android:layout_marginBottom="20dp">
+                android:layout_marginBottom="24dp">
 
                 <LinearLayout
                     android:id="@+id/llPrompt"
@@ -76,24 +79,23 @@
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:src="@drawable/ic_play" 
-                        app:tint="#7F9CF5" />
-                        <!-- Using ic_play as a placeholder if ic_cloud_upload is missing -->
+                        app:tint="@color/web_primary" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Klik untuk memilih file"
-                        android:textColor="#2D3748"
-                        android:textSize="16sp"
+                        android:textColor="@color/text_heading"
+                        android:textSize="14sp"
                         android:textStyle="bold"
-                        android:layout_marginTop="12dp" />
+                        android:layout_marginTop="16dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Format: JPG, PNG, MP4. Max: 20MB"
-                        android:textColor="#A0AEC0"
-                        android:textSize="12sp"
+                        android:textColor="@color/text_hint_muted"
+                        android:textSize="11sp"
                         android:layout_marginTop="4dp" />
                 </LinearLayout>
 
@@ -110,7 +112,8 @@
                     android:layout_height="48dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_play"
-                    android:visibility="gone" />
+                    android:visibility="gone"
+                    app:tint="@color/white" />
             </FrameLayout>
 
             <!-- Description -->
@@ -118,22 +121,34 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Deskripsi / Caption (Opsional)"
-                android:textColor="#2D3748"
+                android:textColor="@color/text_heading"
                 android:textStyle="bold"
-                android:layout_marginBottom="8dp" />
-
-            <EditText
-                android:id="@+id/etCaption"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="@drawable/bg_input"
-                android:gravity="top|start"
-                android:hint="Tulis keterangan foto/video..."
-                android:padding="12dp"
-                android:textColor="#2D3748"
-                android:textColorHint="#A0AEC0"
                 android:textSize="14sp"
-                android:layout_marginBottom="24dp" />
+                android:layout_marginBottom="12dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxCornerRadiusTopStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxCornerRadiusBottomEnd="12dp"
+                android:textColorHint="@color/text_hint_muted"
+                app:hintTextColor="@color/web_primary"
+                app:boxStrokeColor="@color/web_primary"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginBottom="24dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etCaption"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minLines="3"
+                    android:gravity="top"
+                    android:hint="Tulis keterangan foto/video..."
+                    android:textColor="@color/text_heading"
+                    android:inputType="textMultiLine"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Buttons -->
             <LinearLayout
@@ -142,38 +157,39 @@
                 android:gravity="end"
                 android:orientation="horizontal">
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnCancel"
-                    style="?attr/materialButtonOutlinedStyle"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="12dp"
                     android:text="Batal"
-                    android:textColor="#718096"
-                    app:strokeColor="#718096" />
+                    android:textColor="@color/text_body_secondary" />
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnUpload"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#1A73E8"
                     android:text="Upload"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    app:cornerRadius="12dp"
+                    android:backgroundTint="@color/web_primary" />
             </LinearLayout>
 
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
     <FrameLayout
         android:id="@+id/flLoading"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#40000000"
+        android:background="@color/white_opacity_15"
         android:visibility="gone">
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/web_primary" />
     </FrameLayout>
 
 </FrameLayout>

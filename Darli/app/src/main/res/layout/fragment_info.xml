@@ -3,13 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/background_light">
+    android:background="@color/bg_surface">
 
     <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/brand_secondary"
+        android:background="@color/bg_card"
         android:padding="16dp"
         android:elevation="4dp"
         android:gravity="center_vertical">
@@ -19,7 +19,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/ic_arrow_back"
-            app:tint="@color/white"
+            app:tint="@color/text_heading"
             android:layout_marginEnd="16dp"
             xmlns:app="http://schemas.android.com/apk/res-auto"/> 
 
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Info Pondok"
-            android:textColor="@color/white"
+            android:textColor="@color/text_heading"
             android:textSize="18sp"
             android:textStyle="bold"/>
     </LinearLayout>

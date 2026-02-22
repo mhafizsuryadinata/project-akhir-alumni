@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -40,6 +41,7 @@ class EventFragment : Fragment() {
     private lateinit var btnNextMonth: ImageView
     private lateinit var tabLayout: TabLayout
     private lateinit var fabAddEvent: View
+    private lateinit var etSearchEvent: EditText
 
     private var allEvents: List<Event> = emptyList()
     private var selectedDate: Date? = null
@@ -55,6 +57,7 @@ class EventFragment : Fragment() {
         initViews(view)
         setupCalendar()
         setupTabs()
+        setupSearch()
         setupEventList()
         
         fetchEvents()
@@ -73,6 +76,7 @@ class EventFragment : Fragment() {
         btnNextMonth = view.findViewById(R.id.btnNextMonth)
         tabLayout = view.findViewById(R.id.tabLayout)
         fabAddEvent = view.findViewById(R.id.fabAddEvent)
+        etSearchEvent = view.findViewById(R.id.etSearchEvent)
 
         btnBack.setOnClickListener { findNavController().popBackStack() }
         
@@ -109,7 +113,7 @@ class EventFragment : Fragment() {
         }
         rvCalendarStrip.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         rvCalendarStrip.adapter = dateAdapter
-        
+
         // Scroll to selected date or today
         val today = Calendar.getInstance()
         if (currentMonthCalendar.get(Calendar.MONTH) == today.get(Calendar.MONTH) &&
@@ -117,6 +121,16 @@ class EventFragment : Fragment() {
             val dayOfMonth = today.get(Calendar.DAY_OF_MONTH)
             rvCalendarStrip.scrollToPosition(dayOfMonth - 1)
         }
+    }
+
+    private fun setupSearch() {
+        etSearchEvent.addTextChangedListener(object : android.text.TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                filterEvents()
+            }
+            override fun afterTextChanged(s: android.text.Editable?) {}
+        })
     }
 
     private fun getDaysInMonth(calendar: Calendar): List<Date> {
@@ -236,6 +250,17 @@ class EventFragment : Fragment() {
             0 -> allEvents.filter { isUpcoming(it) }
             1 -> allEvents.filter { !isUpcoming(it) }
             else -> allEvents
+        }
+
+        // Apply Search Filter
+        val query = etSearchEvent.text.toString().trim().lowercase()
+        if (query.isNotEmpty()) {
+            filteredList = filteredList.filter { 
+                it.title?.lowercase()?.contains(query) == true ||
+                it.location?.lowercase()?.contains(query) == true ||
+                it.description?.lowercase()?.contains(query) == true ||
+                it.category?.lowercase()?.contains(query) == true
+            }
         }
 
         // Apply Date Filter if selected

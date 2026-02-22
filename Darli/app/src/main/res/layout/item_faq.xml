@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="24dp"
     android:layout_marginTop="12dp"
-    app:cardBackgroundColor="@color/white"
+    app:cardBackgroundColor="@color/bg_card"
     app:cardCornerRadius="12dp"
     app:cardElevation="1dp">
 
@@ -27,7 +27,7 @@
                 android:layout_toStartOf="@+id/ivFaqChevron"
                 android:layout_centerVertical="true"
                 android:text="Pertanyaan"
-                android:textColor="#334155"
+                android:textColor="@color/text_heading"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
@@ -39,7 +39,7 @@
                 android:layout_centerVertical="true"
                 android:src="@drawable/ic_chevron_right"
                 android:rotation="90"
-                app:tint="#64748B" />
+                app:tint="@color/text_body_secondary" />
         </RelativeLayout>
 
         <TextView
@@ -49,7 +49,7 @@
             android:paddingHorizontal="20dp"
             android:paddingBottom="20dp"
             android:text="Jawaban"
-            android:textColor="#6B7280"
+            android:textColor="@color/text_body_primary"
             android:textSize="13sp"
             android:lineSpacingExtra="4sp"
             android:visibility="gone" />

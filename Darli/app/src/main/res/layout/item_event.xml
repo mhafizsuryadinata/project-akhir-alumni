@@ -7,7 +7,9 @@
     android:layout_marginVertical="8dp"
     app:cardCornerRadius="16dp"
     app:cardElevation="2dp"
-    app:cardBackgroundColor="@color/white">
+    app:cardBackgroundColor="@color/bg_card"
+    app:strokeColor="@color/border_subtle"
+    app:strokeWidth="1dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,7 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@color/gray_light" />
+                android:src="@color/text_hint_muted" />
 
             <TextView
                 android:id="@+id/tvYourEvent"
@@ -31,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:text="ACARA ANDA"
                 android:background="@drawable/bg_badge_info"
-                android:backgroundTint="@color/blue_primary"
+                android:backgroundTint="@color/web_primary"
                 android:textColor="@color/white"
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="4dp"
@@ -58,14 +60,14 @@
                     android:layout_width="14dp"
                     android:layout_height="14dp"
                     android:src="@drawable/ic_location"
-                    app:tint="@color/text_secondary"/>
+                    app:tint="@color/text_body_secondary"/>
                 <TextView
                     android:id="@+id/tvEventLocation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Aula Utama Pondok"
                     android:textSize="12sp"
-                    android:textColor="@color/text_secondary"
+                    android:textColor="@color/text_body_secondary"
                     android:layout_marginStart="6dp"
                     android:maxLines="1"
                     android:ellipsize="end"/>
@@ -79,7 +81,7 @@
                 android:text="Reuni Akbar Angkatan 2020"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/text_heading"
                 android:layout_marginBottom="8dp"/>
 
             <!-- Date Strip -->
@@ -90,7 +92,7 @@
                 android:gravity="center_vertical"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/bg_chip_unselected"
-                android:backgroundTint="#E3F2FD"
+                android:backgroundTint="@color/bg_input_account"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="6dp">
                 
@@ -98,7 +100,7 @@
                     android:layout_width="14dp"
                     android:layout_height="14dp"
                     android:src="@drawable/ic_calendar_month"
-                    app:tint="@color/blue_primary"/>
+                    app:tint="@color/web_primary"/>
                     
                 <TextView
                     android:id="@+id/tvEventDate"
@@ -107,7 +109,7 @@
                     android:text="15 Mar 2024 • 17:00 WIB"
                     android:textSize="12sp"
                     android:textStyle="bold"
-                    android:textColor="@color/blue_primary"
+                    android:textColor="@color/web_primary"
                     android:layout_marginStart="8dp"/>
             </LinearLayout>
 
@@ -128,7 +130,7 @@
                     android:textSize="12sp"
                     android:textAllCaps="false"
                     app:cornerRadius="8dp"
-                    android:backgroundTint="@color/blue_primary"
+                    android:backgroundTint="@color/web_primary"
                     android:layout_marginEnd="6dp"
                     android:insetTop="0dp"
                     android:insetBottom="0dp"/>
@@ -141,11 +143,11 @@
                     android:text="Details"
                     android:textSize="12sp"
                     android:textAllCaps="false"
-                    android:textColor="@color/black"
-                    app:strokeColor="#E0E0E0"
+                    android:textColor="@color/text_heading"
+                    app:strokeColor="@color/border_subtle"
                     app:strokeWidth="1dp"
                     app:cornerRadius="8dp"
-                    android:backgroundTint="@color/white"
+                    android:backgroundTint="@color/bg_card"
                     android:layout_marginStart="6dp"
                     android:insetTop="0dp"
                     android:insetBottom="0dp"/>
@@ -167,14 +169,14 @@
                     android:text="Edit"
                     android:textSize="12sp"
                     android:textAllCaps="false"
-                    android:textColor="@color/black"
+                    android:textColor="@color/text_heading"
                     app:icon="@drawable/ic_edit"
-                    app:iconTint="@color/black"
+                    app:iconTint="@color/text_heading"
                     app:iconSize="16dp"
-                    app:strokeColor="#E0E0E0"
-                    app:strokeWidth="0dp"
+                    app:strokeColor="@color/border_subtle"
+                    app:strokeWidth="1dp"
                     app:cornerRadius="8dp"
-                    android:backgroundTint="#F5F5F5"
+                    android:backgroundTint="@color/bg_card"
                     android:layout_marginEnd="6dp"
                     android:insetTop="0dp"
                     android:insetBottom="0dp"/>
@@ -187,14 +189,14 @@
                     android:text="Delete"
                     android:textSize="12sp"
                     android:textAllCaps="false"
-                    android:textColor="#D32F2F"
+                    android:textColor="@color/white"
                     app:icon="@drawable/ic_delete"
-                    app:iconTint="#D32F2F"
+                    app:iconTint="@color/white"
                     app:iconSize="16dp"
-                    app:strokeColor="#E0E0E0"
+                    app:strokeColor="@color/border_subtle"
                     app:strokeWidth="0dp"
                     app:cornerRadius="8dp"
-                    android:backgroundTint="#FFEBEE"
+                    android:backgroundTint="@color/status_error"
                     android:layout_marginStart="6dp"
                     android:insetTop="0dp"
                     android:insetBottom="0dp"/>

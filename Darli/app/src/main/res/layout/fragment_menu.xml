@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8FAFC"
+    android:background="@color/bg_surface"
     tools:context=".MenuFragment">
 
     <!-- Top Header -->
@@ -21,7 +21,7 @@
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:src="@drawable/ic_profile_placeholder"
-            app:civ_border_color="#F1F5F9"
+            app:civ_border_color="@color/border_subtle"
             app:civ_border_width="1dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Halo, Alumni"
-                android:textColor="#64748B"
+                android:textColor="@color/text_body_secondary"
                 android:textSize="13sp" />
 
             <TextView
@@ -49,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Ahmad Fulan"
-                android:textColor="#1E293B"
+                android:textColor="@color/text_heading"
                 android:textSize="17sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -58,7 +58,7 @@
             android:id="@+id/btnNotification"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            app:cardBackgroundColor="@color/white"
+            app:cardBackgroundColor="@color/bg_card"
             app:cardCornerRadius="22.5dp"
             app:cardElevation="2dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -70,7 +70,7 @@
                 android:layout_height="20dp"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_notification_bell"
-                app:tint="#1E293B" />
+                app:tint="@color/text_heading" />
         </com.google.android.material.card.MaterialCardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -101,7 +101,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Dashboard"
-                    android:textColor="#1E293B"
+                    android:textColor="@color/text_heading"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
@@ -115,7 +115,7 @@
                     android:paddingHorizontal="12dp"
                     android:paddingVertical="4dp"
                     android:text="October 24"
-                    android:textColor="#3B82F6"
+                    android:textColor="@color/web_primary"
                     android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
@@ -132,7 +132,7 @@
                     android:id="@+id/cardStatsHeader"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardBackgroundColor="@color/white"
+                    app:cardBackgroundColor="@color/bg_card"
                     app:cardCornerRadius="24dp"
                     app:cardElevation="2dp">
 
@@ -151,7 +151,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Total Jaringan Alumni"
-                                android:textColor="#64748B"
+                                android:textColor="@color/text_body_secondary"
                                 android:textSize="14sp" />
 
                             <LinearLayout
@@ -166,7 +166,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="1,250"
-                                    android:textColor="#1E293B"
+                                    android:textColor="@color/text_heading"
                                     android:textSize="32sp"
                                     android:textStyle="bold" />
 
@@ -178,7 +178,7 @@
                                     android:paddingHorizontal="8dp"
                                     android:paddingVertical="2dp"
                                     android:text="↗ +5%"
-                                    android:textColor="#22C55E"
+                                    android:textColor="@color/status_success"
                                     android:textSize="11sp"
                                     android:textStyle="bold" />
                             </LinearLayout>
@@ -190,7 +190,7 @@
                             android:layout_gravity="center_vertical"
                             android:alpha="0.1"
                             android:src="@drawable/ic_people"
-                            app:tint="#1E293B" />
+                            app:tint="@color/text_heading" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
@@ -209,10 +209,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
                         android:layout_weight="1"
-                        app:cardBackgroundColor="@color/white"
+                        app:cardBackgroundColor="@color/bg_card"
                         app:cardCornerRadius="24dp"
                         app:cardElevation="4dp"
-                        app:strokeColor="#F1F5F9"
+                        app:strokeColor="@color/border_subtle"
                         app:strokeWidth="1dp">
 
                         <LinearLayout
@@ -231,7 +231,7 @@
                                     android:layout_height="20dp"
                                     android:layout_gravity="center"
                                     android:src="@drawable/ic_active_network"
-                                    app:tint="#3B82F6" />
+                                    app:tint="@color/web_primary" />
                             </FrameLayout>
 
                             <TextView
@@ -240,7 +240,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="12dp"
                                 android:text="450"
-                                android:textColor="#1E293B"
+                                android:textColor="@color/text_heading"
                                 android:textSize="24sp"
                                 android:textStyle="bold" />
 
@@ -248,7 +248,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Kontak Aktif"
-                                android:textColor="#64748B"
+                                android:textColor="@color/text_body_secondary"
                                 android:textSize="12sp" />
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
@@ -260,10 +260,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_weight="1"
-                        app:cardBackgroundColor="@color/white"
+                        app:cardBackgroundColor="@color/bg_card"
                         app:cardCornerRadius="24dp"
                         app:cardElevation="4dp"
-                        app:strokeColor="#F1F5F9"
+                        app:strokeColor="@color/border_subtle"
                         app:strokeWidth="1dp">
 
                         <LinearLayout
@@ -282,7 +282,7 @@
                                     android:layout_height="20dp"
                                     android:layout_gravity="center"
                                     android:src="@drawable/ic_calendar_month"
-                                    app:tint="#F97316" />
+                                    app:tint="@color/status_warning" />
                             </FrameLayout>
 
                             <TextView
@@ -291,7 +291,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="12dp"
                                 android:text="3"
-                                android:textColor="#1E293B"
+                                android:textColor="@color/text_heading"
                                 android:textSize="24sp"
                                 android:textStyle="bold" />
 
@@ -299,7 +299,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Acara Mendatang"
-                                android:textColor="#64748B"
+                                android:textColor="@color/text_body_secondary"
                                 android:textSize="12sp" />
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
@@ -313,7 +313,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                app:cardBackgroundColor="@color/white"
+                app:cardBackgroundColor="@color/bg_card"
                 app:cardCornerRadius="24dp"
                 app:cardElevation="4dp">
 
@@ -341,7 +341,7 @@
                                 android:paddingHorizontal="12dp"
                                 android:paddingVertical="4dp"
                                 android:text="KABAR TERKINI"
-                                android:textColor="#1E293B"
+                                android:textColor="@color/text_heading"
                                 android:textSize="10sp"
                                 android:textStyle="bold" />
                     </RelativeLayout>
@@ -357,7 +357,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Pondok Expansion Project 2024"
-                            android:textColor="#1E293B"
+                            android:textColor="@color/text_heading"
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
@@ -369,7 +369,7 @@
                             android:ellipsize="end"
                             android:maxLines="2"
                             android:text="The foundation has officially started the new dormitory construction. Read about how you can contribute..."
-                            android:textColor="#64748B"
+                            android:textColor="@color/text_body_secondary"
                             android:textSize="13sp" />
 
                         <androidx.appcompat.widget.AppCompatButton
@@ -394,7 +394,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:text="Menu Cepat"
-                android:textColor="#1E293B"
+                android:textColor="@color/text_heading"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -416,10 +416,10 @@
                     android:layout_columnWeight="1"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="16dp"
-                    app:cardBackgroundColor="@color/white"
+                    app:cardBackgroundColor="@color/bg_card"
                     app:cardCornerRadius="24dp"
                     app:cardElevation="4dp"
-                    app:strokeColor="#F1F5F9"
+                    app:strokeColor="@color/border_subtle"
                     app:strokeWidth="1dp">
 
                     <LinearLayout
@@ -439,7 +439,7 @@
                                 android:layout_height="22dp"
                                 android:layout_gravity="center"
                                 android:src="@drawable/ic_graduation_cap"
-                                app:tint="#3B82F6" />
+                                app:tint="@color/web_primary" />
                         </FrameLayout>
 
                         <LinearLayout
@@ -452,7 +452,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Kontak Ustadz"
-                                android:textColor="#1E293B"
+                                android:textColor="@color/text_heading"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
 
@@ -460,7 +460,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Hubungi"
-                                android:textColor="#94A3B8"
+                                android:textColor="@color/text_hint_muted"
                                 android:textSize="11sp" />
                         </LinearLayout>
                     </LinearLayout>
@@ -475,10 +475,10 @@
                     android:layout_columnWeight="1"
                     android:layout_marginStart="8dp"
                     android:layout_marginBottom="16dp"
-                    app:cardBackgroundColor="@color/white"
+                    app:cardBackgroundColor="@color/bg_card"
                     app:cardCornerRadius="24dp"
                     app:cardElevation="4dp"
-                    app:strokeColor="#F1F5F9"
+                    app:strokeColor="@color/border_subtle"
                     app:strokeWidth="1dp">
 
                     <LinearLayout
@@ -498,7 +498,7 @@
                                 android:layout_height="22dp"
                                 android:layout_gravity="center"
                                 android:src="@drawable/ic_comment"
-                                app:tint="#10B981" />
+                                app:tint="@color/status_success" />
                         </FrameLayout>
 
                         <LinearLayout
@@ -511,7 +511,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Komentar"
-                                android:textColor="#1E293B"
+                                android:textColor="@color/text_heading"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
 
@@ -519,7 +519,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Lihat &amp; Tulis"
-                                android:textColor="#94A3B8"
+                                android:textColor="@color/text_hint_muted"
                                 android:textSize="11sp" />
                         </LinearLayout>
                     </LinearLayout>
@@ -533,10 +533,10 @@
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:layout_marginEnd="8dp"
-                    app:cardBackgroundColor="@color/white"
+                    app:cardBackgroundColor="@color/bg_card"
                     app:cardCornerRadius="24dp"
                     app:cardElevation="4dp"
-                    app:strokeColor="#F1F5F9"
+                    app:strokeColor="@color/border_subtle"
                     app:strokeWidth="1dp">
 
                     <LinearLayout
@@ -556,7 +556,7 @@
                                 android:layout_height="22dp"
                                 android:layout_gravity="center"
                                 android:src="@drawable/ic_help_lifebuoy"
-                                app:tint="#EC4899" />
+                                app:tint="@color/status_info" />
                         </FrameLayout>
 
                         <LinearLayout
@@ -569,7 +569,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Bantuan"
-                                android:textColor="#1E293B"
+                                android:textColor="@color/text_heading"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
 
@@ -577,7 +577,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Kontak Admin"
-                                android:textColor="#94A3B8"
+                                android:textColor="@color/text_hint_muted"
                                 android:textSize="11sp" />
                         </LinearLayout>
                     </LinearLayout>
@@ -591,10 +591,10 @@
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:layout_marginStart="8dp"
-                    app:cardBackgroundColor="@color/white"
+                    app:cardBackgroundColor="@color/bg_card"
                     app:cardCornerRadius="24dp"
                     app:cardElevation="4dp"
-                    app:strokeColor="#F1F5F9"
+                    app:strokeColor="@color/border_subtle"
                     app:strokeWidth="1dp">
 
                     <LinearLayout
@@ -614,7 +614,7 @@
                                 android:layout_height="22dp"
                                 android:layout_gravity="center"
                                 android:src="@drawable/ic_gallery"
-                                app:tint="#F97316" />
+                                app:tint="@color/status_warning" />
                         </FrameLayout>
 
                         <LinearLayout
@@ -627,7 +627,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Galeri"
-                                android:textColor="#1E293B"
+                                android:textColor="@color/text_heading"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
 
@@ -635,7 +635,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Kenangan"
-                                android:textColor="#94A3B8"
+                                android:textColor="@color/text_hint_muted"
                                 android:textSize="11sp" />
                         </LinearLayout>
                     </LinearLayout>

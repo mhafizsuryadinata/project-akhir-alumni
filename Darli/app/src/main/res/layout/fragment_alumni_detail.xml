@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7FA"
+    android:background="@color/bg_surface"
     tools:context=".AlumniDetailFragment">
 
     <ScrollView
@@ -23,7 +23,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#E8F0FE"
+                android:background="@color/bg_card"
                 android:paddingBottom="24dp">
 
                 <!-- Toolbar Area -->
@@ -38,11 +38,10 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_centerVertical="true"
-                        android:background="@drawable/circle_background"
-                        android:backgroundTint="#FFFFFF"
+                        android:background="@drawable/bg_btn_secondary"
                         android:padding="8dp"
                         android:src="@drawable/ic_arrow_back"
-                        app:tint="#333333"
+                        app:tint="@color/text_heading"
                         android:elevation="2dp"/>
 
                     <TextView
@@ -51,7 +50,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:text="PROFIL ALUMNI"
-                        android:textColor="#2962FF"
+                        android:textColor="@color/web_primary"
                         android:textStyle="bold"
                         android:letterSpacing="0.05"/>
                 </RelativeLayout>
@@ -71,7 +70,7 @@
                         android:layout_height="match_parent"
                         android:src="@drawable/ic_profile_placeholder"
                         app:civ_border_width="4dp"
-                        app:civ_border_color="#FFFFFF"/>
+                        app:civ_border_color="@color/bg_card"/>
 
                     <ImageView
                         android:id="@+id/ivVerified"
@@ -80,9 +79,8 @@
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentEnd="true"
                         android:src="@drawable/ic_check_circle"
-                        app:tint="#2962FF"
-                        android:background="@drawable/circle_background"
-                        android:backgroundTint="#FFFFFF"
+                        app:tint="@color/web_primary"
+                        android:background="@drawable/bg_icon_settings_circle"
                         android:padding="2dp"/>
                 </RelativeLayout>
 
@@ -95,7 +93,7 @@
                     android:layout_marginTop="16dp"
                     android:text="Nama Alumni, S.T."
                     android:textAlignment="center"
-                    android:textColor="#000000"
+                    android:textColor="@color/text_heading"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:paddingHorizontal="24dp"/>
@@ -108,7 +106,7 @@
                     android:layout_marginTop="4dp"
                     android:text="Alumni 2015 - 2021"
                     android:textAlignment="center"
-                    android:textColor="#2962FF"
+                    android:textColor="@color/web_primary"
                     android:textSize="14sp"
                     android:textStyle="bold"/>
 
@@ -124,7 +122,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_rounded_card_white"
+                        android:background="@drawable/bg_btn_secondary"
                         android:paddingHorizontal="16dp"
                         android:paddingVertical="8dp"
                         android:gravity="center_vertical"
@@ -134,14 +132,14 @@
                             android:layout_width="16dp"
                             android:layout_height="16dp"
                             android:src="@drawable/ic_work"
-                            app:tint="#2962FF"/>
+                            app:tint="@color/web_primary"/>
                         <TextView
                             android:id="@+id/tvDetailProfession"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:text="SOFTWARE ENGINEER"
-                            android:textColor="#333333"
+                            android:textColor="@color/text_heading"
                             android:textStyle="bold"
                             android:textSize="12sp"/>
                     </LinearLayout>
@@ -149,7 +147,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_rounded_card_white"
+                        android:background="@drawable/bg_btn_secondary"
                         android:paddingHorizontal="16dp"
                         android:paddingVertical="8dp"
                         android:gravity="center_vertical"
@@ -158,14 +156,14 @@
                             android:layout_width="16dp"
                             android:layout_height="16dp"
                             android:src="@drawable/ic_location"
-                            app:tint="#2962FF"/>
+                            app:tint="@color/web_primary"/>
                         <TextView
                             android:id="@+id/tvDetailAddress"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:text="PADANG, SUMBAR"
-                            android:textColor="#333333"
+                            android:textColor="@color/text_heading"
                             android:textStyle="bold"
                             android:textSize="12sp"/>
                     </LinearLayout>
@@ -179,10 +177,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="-12dp"
-                app:cardBackgroundColor="@color/white"
+                app:cardBackgroundColor="@color/bg_card"
                 app:cardCornerRadius="24dp"
                 app:cardElevation="4dp"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="16dp"
+                app:strokeColor="@color/border_subtle"
+                app:strokeWidth="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -195,7 +195,7 @@
                         android:layout_height="wrap_content"
                         android:text="PESAN SINGKAT / BIO"
                         android:textSize="10sp"
-                        android:textColor="#757575"
+                        android:textColor="@color/text_body_secondary"
                         android:letterSpacing="0.1"
                         android:textStyle="bold"
                         android:layout_marginBottom="12dp"/>
@@ -206,7 +206,7 @@
                         android:layout_height="wrap_content"
                         android:text="Fokus pada pengembangan ekosistem teknologi digital..."
                         android:textSize="14sp"
-                        android:textColor="#333333"
+                        android:textColor="@color/text_body_primary"
                         android:lineSpacingMultiplier="1.4"/>
                         
                     <!-- Social Links inside Bio Card -->
@@ -233,13 +233,13 @@
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:src="@drawable/ic_instagram"
-                                app:tint="#E1306C"/>
+                                app:tint="@color/status_info"/>
                              <TextView
                                 android:id="@+id/tvInstagramApp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@instagram"
-                                android:textColor="#333333"
+                                android:textColor="@color/text_body_primary"
                                 android:textSize="14sp"
                                 android:layout_marginStart="12dp"/>
                         </LinearLayout>
@@ -260,13 +260,13 @@
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:src="@drawable/ic_linkedin"
-                                app:tint="#0077B5"/>
+                                app:tint="@color/web_primary"/>
                              <TextView
                                 android:id="@+id/tvLinkedinApp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="linkedin.com/in/user"
-                                android:textColor="#333333"
+                                android:textColor="@color/text_body_primary"
                                 android:textSize="14sp"
                                 android:layout_marginStart="12dp"
                                 android:maxLines="1"
@@ -289,14 +289,14 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/ic_graduation_cap"
-                    app:tint="#757575"/>
+                    app:tint="@color/text_body_secondary"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="PENDIDIKAN &amp; KARIR"
                     android:textSize="12sp"
                     android:textStyle="bold"
-                    android:textColor="#757575"
+                    android:textColor="@color/text_body_secondary"
                     android:letterSpacing="0.1"
                     android:layout_marginStart="8dp"/>
             </LinearLayout>
@@ -306,10 +306,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                app:cardBackgroundColor="@color/white"
+                app:cardBackgroundColor="@color/bg_card"
                 app:cardCornerRadius="24dp"
                 app:cardElevation="2dp"
-                android:layout_marginBottom="24dp">
+                android:layout_marginBottom="24dp"
+                app:strokeColor="@color/border_subtle"
+                app:strokeWidth="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -325,11 +327,10 @@
                         <ImageView
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:background="@drawable/bg_circle_blue_light"
+                            android:background="@drawable/bg_btn_secondary"
                             android:src="@drawable/ic_graduation_cap"
-                            app:tint="#2962FF"
+                            app:tint="@color/web_primary"
                             android:padding="8dp"/> 
-                            <!-- Should use an education icon inside a circle bg, simplistic for now -->
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -340,7 +341,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="PENDIDIKAN LANJUTAN"
-                                android:textColor="#2962FF"
+                                android:textColor="@color/web_primary"
                                 android:textSize="12sp"
                                 android:textStyle="bold"/>
                             <TextView
@@ -348,7 +349,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Data Pendidikan"
-                                android:textColor="#000000"
+                                android:textColor="@color/text_heading"
                                 android:textStyle="bold"
                                 android:textSize="16sp"/>
                         </LinearLayout>
@@ -365,7 +366,9 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginBottom="24dp"
                 app:cardCornerRadius="16dp"
-                app:cardElevation="2dp">
+                app:cardElevation="2dp"
+                app:strokeColor="@color/border_subtle"
+                app:strokeWidth="1dp">
                 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -381,7 +384,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        android:indeterminateTint="#2962FF"/>
+                        android:indeterminateTint="@color/web_primary"/>
                         
                     <!-- Click overlay to intercept touches and open full map app -->
                     <View
@@ -400,7 +403,8 @@
                          android:layout_alignParentBottom="true"
                          android:layout_alignParentStart="true"
                          android:layout_margin="16dp"
-                         android:background="@drawable/bg_rounded_pill_white_alpha"
+                         android:background="@drawable/bg_btn_secondary"
+                         android:alpha="0.9"
                          android:paddingHorizontal="12dp"
                          android:paddingVertical="8dp">
                          
@@ -408,13 +412,13 @@
                              android:layout_width="20dp"
                              android:layout_height="20dp"
                              android:src="@drawable/ic_location"
-                             app:tint="#2962FF"/>
+                             app:tint="@color/web_primary"/>
                              
                          <TextView
                              android:layout_width="wrap_content"
                              android:layout_height="wrap_content"
                              android:text="Dilihat dari Lokasi Saat Ini"
-                             android:textColor="#333333"
+                             android:textColor="@color/text_heading"
                              android:textStyle="bold"
                              android:textSize="12sp"
                              android:layout_marginStart="8dp"/>
@@ -433,7 +437,7 @@
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
         android:padding="16dp"
-        android:background="#FFFFFF"
+        android:background="@color/bg_card"
         android:elevation="8dp">
 
         <com.google.android.material.button.MaterialButton
@@ -448,7 +452,9 @@
             app:icon="@drawable/ic_email"
             app:iconGravity="textStart"
             android:layout_marginEnd="8dp"
-            android:backgroundTint="#2962FF"/>
+            android:textColor="@color/white"
+            app:iconTint="@color/white"
+            android:backgroundTint="@color/web_primary"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnContactWhatsApp"
@@ -462,7 +468,9 @@
             app:icon="@drawable/ic_whatsapp"
             app:iconGravity="textStart"
             android:layout_marginStart="8dp"
-            android:backgroundTint="#00E676"/> <!-- Green -->
+            android:textColor="@color/white"
+            app:iconTint="@color/white"
+            android:backgroundTint="@color/status_success"/>
 
     </LinearLayout>
 </RelativeLayout>

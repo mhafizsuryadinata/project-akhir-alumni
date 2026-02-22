@@ -16,7 +16,7 @@ class ImageSliderAdapter(
 
     // ViewHolder untuk menampung view dari setiap item slider
     inner class ImageSliderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val imageView: ImageView = itemView.findViewById(R.id.imageViewSlide)
+        val imageView: ImageView = itemView.findViewById(R.id.ivSliderImage)
     }
 
     // Membuat ViewHolder baru

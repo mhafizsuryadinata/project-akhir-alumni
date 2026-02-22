@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:padding="8dp"
     android:layout_marginBottom="4dp"
-    android:background="@drawable/bg_reply_item">
+    android:background="@color/border_subtle">
 
     <TextView
         android:id="@+id/tvReplySender"
@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Isi balasan komentar..."
-        android:textColor="#374151"
+        android:textColor="@color/text_body_primary"
         android:textSize="13sp"
         android:layout_marginTop="2dp"/>
 
@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="12 Jan"
-        android:textColor="#9CA3AF"
+        android:textColor="@color/text_hint_muted"
         android:textSize="10sp"
         android:layout_marginTop="2dp"/>
 

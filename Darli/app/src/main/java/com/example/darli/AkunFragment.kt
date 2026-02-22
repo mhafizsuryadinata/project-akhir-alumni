@@ -112,6 +112,19 @@ class AkunFragment : Fragment() {
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
+
+        // Dark Mode Toggle
+        val themeManager = ThemeManager(requireContext())
+        val switchDarkMode = view.findViewById<androidx.appcompat.widget.SwitchCompat>(R.id.switchDarkMode)
+        val tvThemeStatus = view.findViewById<TextView>(R.id.tvThemeStatus)
+        
+        switchDarkMode.isChecked = themeManager.isDarkMode()
+        tvThemeStatus.text = if (themeManager.isDarkMode()) "Mode Gelap aktif" else "Mode Terang aktif"
+        
+        switchDarkMode.setOnCheckedChangeListener { _, isChecked ->
+            themeManager.setDarkMode(isChecked)
+            themeManager.applyTheme()
+        }
     }
 
     private fun fetchLatestData(view: View, userId: String) {

@@ -1,56 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cardAction"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardBackgroundColor="@color/white"
-    app:cardCornerRadius="24dp"
-    app:cardElevation="2dp">
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@color/bg_card"
+    app:strokeColor="@color/border_subtle"
+    app:strokeWidth="1dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="12dp">
-
-        <View
-            android:id="@+id/viewIconBg"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/bg_icon_blue_light" />
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="20dp">
 
         <ImageView
-            android:id="@+id/ivActionIcon"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="-30dp"
-            android:src="@drawable/ic_graduation_cap"
-            app:tint="#3B82F6" />
+            android:id="@+id/ivActionCardIcon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_work"
+            app:tint="@color/web_primary" />
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/tvActionCardTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="22dp"
-            android:orientation="vertical">
+            android:layout_marginTop="12dp"
+            android:text="Bursa Kerja"
+            android:textColor="@color/text_heading"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tvActionTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ustadz"
-                android:textColor="#1E293B"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+        <TextView
+            android:id="@+id/tvActionCardSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Cari lowongan"
+            android:textColor="@color/text_body_secondary"
+            android:textSize="12sp" />
 
-            <TextView
-                android:id="@+id/tvActionSubtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Contacts"
-                android:textColor="#94A3B8"
-                android:textSize="11sp" />
-        </LinearLayout>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

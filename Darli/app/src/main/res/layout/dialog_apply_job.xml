@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="20dp">
+    android:padding="24dp"
+    android:background="@color/bg_card">
 
     <TextView
         android:layout_width="match_parent"
@@ -12,19 +13,21 @@
         android:text="Surat Lamaran (Opsi)"
         android:textSize="14sp"
         android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_marginBottom="8dp"/>
+        android:textColor="@color/text_heading"
+        android:layout_marginBottom="12dp"/>
 
     <EditText
         android:id="@+id/etCoverLetter"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:background="@drawable/bg_rounded_gray"
+        android:background="@drawable/bg_input_account"
         android:gravity="top"
         android:hint="Tulis pesan singkat untuk perusahaan..."
-        android:padding="12dp"
+        android:textColorHint="@color/text_hint_muted"
+        android:textColor="@color/text_heading"
+        android:padding="16dp"
         android:textSize="14sp"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="24dp"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -32,16 +35,21 @@
         android:text="Upload CV (PDF/DOC)"
         android:textSize="14sp"
         android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_marginBottom="8dp"/>
+        android:textColor="@color/text_heading"
+        android:layout_marginBottom="12dp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSelectCV"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:text="Pilih File CV"
-        app:icon="@drawable/ic_download"/>
+        app:cornerRadius="12dp"
+        app:strokeColor="@color/web_primary"
+        android:textColor="@color/web_primary"
+        app:icon="@drawable/ic_download"
+        app:iconTint="@color/web_primary"
+        app:iconGravity="textStart"/>
 
     <TextView
         android:id="@+id/tvSelectedFile"
@@ -49,8 +57,8 @@
         android:layout_height="wrap_content"
         android:text="No file selected"
         android:textSize="12sp"
-        android:textColor="@color/blue_primary"
-        android:layout_marginTop="4dp"
+        android:textColor="@color/status_info"
+        android:layout_marginTop="8dp"
         android:visibility="gone"/>
 
 </LinearLayout>

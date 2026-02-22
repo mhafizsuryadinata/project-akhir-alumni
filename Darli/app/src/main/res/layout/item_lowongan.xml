@@ -6,7 +6,9 @@
     android:layout_marginBottom="16dp"
     app:cardCornerRadius="20dp"
     app:cardElevation="2dp"
-    app:cardBackgroundColor="@color/white">
+    app:cardBackgroundColor="@color/bg_card"
+    app:strokeColor="@color/border_subtle"
+    app:strokeWidth="1dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -40,7 +42,7 @@
                 android:text="Senior UI/UX Designer"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:textColor="@color/blue_primary"/>
+                android:textColor="@color/text_heading"/>
 
             <TextView
                 android:id="@+id/tvCompanyName"
@@ -48,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:text="PT Teknologi Nusantara"
                 android:textSize="14sp"
-                android:textColor="@color/black"
+                android:textColor="@color/text_body_primary"
                 android:layout_marginTop="2dp"/>
         </LinearLayout>
         
@@ -57,7 +59,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/ic_bookmark_border"
-            app:tint="@color/gray_500"
+            app:tint="@color/text_hint_muted"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"/>
 
@@ -88,8 +90,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Remote"
-                android:background="@drawable/bg_chip_gray_light"
-                android:textColor="@color/gray_700"
+                android:background="@color/border_subtle"
+                android:textColor="@color/text_body_secondary"
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="4dp"
                 android:textSize="12sp"
@@ -100,8 +102,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Full-time"
-                android:background="@drawable/bg_chip_gray_light"
-                android:textColor="@color/gray_700"
+                android:background="@color/border_subtle"
+                android:textColor="@color/text_body_secondary"
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="4dp"
                 android:textSize="12sp"/>
@@ -111,7 +113,7 @@
             android:id="@+id/vDivider"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#EEE"
+            android:background="@color/border_subtle"
             android:layout_below="@id/llTags"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"/>
@@ -138,14 +140,14 @@
                         android:layout_width="16dp"
                         android:layout_height="16dp"
                         android:src="@drawable/ic_attach_money"
-                        app:tint="@color/gray_500"
+                        app:tint="@color/text_body_secondary"
                         android:layout_marginEnd="4dp"/>
                     <TextView
                         android:id="@+id/tvJobSalary"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Rp 12jt - 18jt"
-                        android:textColor="@color/gray_700"
+                        android:textColor="@color/text_body_primary"
                         android:textSize="13sp"/>
                 </LinearLayout>
 
@@ -158,15 +160,17 @@
                         android:layout_width="16dp"
                         android:layout_height="16dp"
                         android:src="@drawable/ic_clock"
-                        app:tint="#F97316"
-                        android:layout_marginEnd="4dp"/>
+                        app:tint="@color/status_warning"
+                        android:contentDescription="Tenggat" />
                     <TextView
                         android:id="@+id/tvDeadline"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Berakhir dalam 2 hari"
-                        android:textColor="#F97316"
-                        android:textSize="12sp"/>
+                        android:layout_marginStart="6dp"
+                        android:text="H-7"
+                        android:textColor="@color/status_warning"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -177,10 +181,11 @@
                 android:text="Lihat Detail"
                 android:textSize="12sp"
                 app:cornerRadius="20dp"
+                android:textColor="@color/white"
                 android:textAllCaps="false"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:backgroundTint="@color/blue_primary"
+                android:backgroundTint="@color/web_primary"
                 android:paddingHorizontal="20dp"/>
         </RelativeLayout>
 

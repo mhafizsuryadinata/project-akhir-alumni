@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:background="#F8FAFC">
+    android:background="@color/bg_surface">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="64dp"
-            android:background="@color/white"
+            android:background="@color/bg_card"
             android:paddingHorizontal="16dp">
 
             <ImageView
@@ -29,13 +29,13 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="#1E293B" />
+                app:tint="@color/text_heading" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Akun Saya"
-                android:textColor="#1E293B"
+                android:textColor="@color/text_heading"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -47,13 +47,13 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#F1F5F9" />
+            android:background="@color/border_subtle" />
 
         <!-- Profile Section -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:background="@color/bg_card"
             android:gravity="center_horizontal"
             android:orientation="vertical"
             android:padding="24dp">
@@ -67,7 +67,7 @@
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:src="@drawable/ic_profile_placeholder"
-                    app:civ_border_color="#F1F5F9"
+                    app:civ_border_color="@color/border_subtle"
                     app:civ_border_width="4dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -88,7 +88,7 @@
                         android:layout_height="18dp"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_camera_white"
-                        app:tint="#3B82F6" />
+                        app:tint="@color/web_primary" />
                 </FrameLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -98,7 +98,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Ahmad Fulan"
-                android:textColor="#1E293B"
+                android:textColor="@color/text_heading"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
@@ -108,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="Angkatan 2015"
-                android:textColor="#64748B"
+                android:textColor="@color/text_body_secondary"
                 android:textSize="14sp" />
 
             <LinearLayout
@@ -126,7 +126,7 @@
                     android:background="@drawable/bg_btn_secondary"
                     android:text="Ubah Foto"
                     android:textAllCaps="false"
-                    android:textColor="#1E293B"
+                    android:textColor="@color/text_heading"
                     android:textStyle="bold" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -151,7 +151,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/white"
+            android:background="@color/bg_card"
             android:orientation="vertical"
             android:padding="24dp">
 
@@ -165,14 +165,14 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/ic_person"
-                    app:tint="#3B82F6" />
+                    app:tint="@color/web_primary" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:text="Informasi Pribadi"
-                    android:textColor="#1E293B"
+                    android:textColor="@color/text_heading"
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -181,7 +181,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="16dp"
-                android:background="#F1F5F9" />
+                android:background="@color/border_subtle" />
 
             <!-- Nama Lengkap -->
             <TextView
@@ -189,7 +189,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Nama Lengkap"
-                android:textColor="#64748B"
+                android:textColor="@color/text_body_secondary"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
@@ -201,7 +201,7 @@
                 android:background="@drawable/bg_input_account"
                 android:gravity="center_vertical"
                 android:paddingHorizontal="16dp"
-                android:textColor="#1E293B"
+                android:textColor="@color/text_heading"
                 android:textSize="14sp"
                 android:inputType="textPersonName" />
 
@@ -211,7 +211,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Alamat"
-                android:textColor="#64748B"
+                android:textColor="@color/text_body_secondary"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
@@ -223,7 +223,7 @@
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bg_input_account"
                 android:padding="16dp"
-                android:textColor="#1E293B"
+                android:textColor="@color/text_heading"
                 android:textSize="14sp"
                 android:inputType="textPostalAddress" />
 
@@ -233,7 +233,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Nomor Telepon"
-                android:textColor="#64748B"
+                android:textColor="@color/text_body_secondary"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
@@ -245,7 +245,7 @@
                 android:background="@drawable/bg_input_account"
                 android:gravity="center_vertical"
                 android:paddingHorizontal="16dp"
-                android:textColor="#1E293B"
+                android:textColor="@color/text_heading"
                 android:textSize="14sp"
                 android:inputType="phone" />
 
@@ -265,7 +265,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Tahun Masuk"
-                        android:textColor="#64748B"
+                        android:textColor="@color/text_body_secondary"
                         android:textSize="12sp"
                         android:textStyle="bold" />
 
@@ -276,11 +276,11 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
                         android:background="@drawable/bg_input_account"
-                        android:backgroundTint="#F1F5F9"
+                        android:backgroundTint="@color/bg_surface"
                         android:gravity="center_vertical"
                         android:paddingHorizontal="16dp"
                         android:text="2011"
-                        android:textColor="#64748B"
+                        android:textColor="@color/text_body_secondary"
                         android:textSize="14sp" />
                 </LinearLayout>
 
@@ -294,7 +294,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Tahun Tamat"
-                        android:textColor="#64748B"
+                        android:textColor="@color/text_body_secondary"
                         android:textSize="12sp"
                         android:textStyle="bold" />
 
@@ -304,11 +304,11 @@
                         android:layout_height="52dp"
                         android:layout_marginTop="8dp"
                         android:background="@drawable/bg_input_account"
-                        android:backgroundTint="#F1F5F9"
+                        android:backgroundTint="@color/bg_surface"
                         android:gravity="center_vertical"
                         android:paddingHorizontal="16dp"
                         android:text="2015"
-                        android:textColor="#64748B"
+                        android:textColor="@color/text_body_secondary"
                         android:textSize="14sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -318,7 +318,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="* Data tahun angkatan dan tamat hanya dapat diubah oleh Admin."
-                android:textColor="#94A3B8"
+                android:textColor="@color/text_hint_muted"
                 android:textSize="11sp" />
         </LinearLayout>
 
@@ -327,7 +327,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/white"
+            android:background="@color/bg_card"
             android:orientation="vertical"
             android:padding="24dp">
 
@@ -341,14 +341,14 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/ic_briefcase"
-                    app:tint="#3B82F6" />
+                    app:tint="@color/web_primary" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:text="Detail Profesional"
-                    android:textColor="#1E293B"
+                    android:textColor="@color/text_heading"
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -357,7 +357,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="16dp"
-                android:background="#F1F5F9" />
+                android:background="@color/border_subtle" />
 
             <!-- Pekerjaan -->
             <TextView
@@ -365,7 +365,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Pekerjaan Saat Ini"
-                android:textColor="#64748B"
+                android:textColor="@color/text_body_secondary"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
@@ -379,7 +379,7 @@
                 android:hint="Contoh: Pegawai Swasta, Guru"
                 android:inputType="text"
                 android:paddingHorizontal="16dp"
-                android:textColor="#1E293B"
+                android:textColor="@color/text_heading"
                 android:textSize="14sp" />
 
             <!-- Email -->
@@ -388,7 +388,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Alamat Email"
-                android:textColor="#64748B"
+                android:textColor="@color/text_body_secondary"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
@@ -402,7 +402,7 @@
                 android:hint="email@example.com"
                 android:inputType="textEmailAddress"
                 android:paddingHorizontal="16dp"
-                android:textColor="#1E293B"
+                android:textColor="@color/text_heading"
                 android:textSize="14sp" />
 
             <!-- Lokasi -->
@@ -411,7 +411,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Lokasi Saat Ini"
-                android:textColor="#64748B"
+                android:textColor="@color/text_body_secondary"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
@@ -425,7 +425,7 @@
                 android:hint="Masukkan lokasi terkini"
                 android:inputType="text"
                 android:padding="16dp"
-                android:textColor="#1E293B"
+                android:textColor="@color/text_heading"
                 android:textSize="14sp" />
 
             <!-- Bio -->
@@ -434,7 +434,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Bio / Tentang Saya"
-                android:textColor="#64748B"
+                android:textColor="@color/text_body_secondary"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
@@ -449,7 +449,7 @@
                 android:hint="Ceritakan sedikit tentang Anda"
                 android:inputType="textMultiLine"
                 android:padding="16dp"
-                android:textColor="#1E293B"
+                android:textColor="@color/text_heading"
                 android:textSize="14sp" />
 
             <!-- Instagram -->
@@ -458,7 +458,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Akun Instagram"
-                android:textColor="#64748B"
+                android:textColor="@color/text_body_secondary"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
@@ -472,7 +472,7 @@
                 android:hint="@username"
                 android:inputType="text"
                 android:paddingHorizontal="16dp"
-                android:textColor="#1E293B"
+                android:textColor="@color/text_heading"
                 android:textSize="14sp" />
 
             <!-- LinkedIn -->
@@ -481,7 +481,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Profil LinkedIn"
-                android:textColor="#64748B"
+                android:textColor="@color/text_body_secondary"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
@@ -495,7 +495,7 @@
                 android:hint="URL Profil LinkedIn"
                 android:inputType="textUri"
                 android:paddingHorizontal="16dp"
-                android:textColor="#1E293B"
+                android:textColor="@color/text_heading"
                 android:textSize="14sp" />
 
             <!-- Pendidikan Lanjutan -->
@@ -504,7 +504,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Pendidikan Lanjutan"
-                android:textColor="#64748B"
+                android:textColor="@color/text_body_secondary"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
@@ -518,7 +518,7 @@
                 android:hint="Kuliah di UNAND, dll"
                 android:inputType="text"
                 android:paddingHorizontal="16dp"
-                android:textColor="#1E293B"
+                android:textColor="@color/text_heading"
                 android:textSize="14sp" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -539,7 +539,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/white"
+            android:background="@color/bg_card"
             android:orientation="vertical"
             android:padding="24dp">
 
@@ -553,14 +553,14 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/ic_settings"
-                    app:tint="#3B82F6" />
+                    app:tint="@color/web_primary" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:text="Pengaturan Aplikasi"
-                    android:textColor="#1E293B"
+                    android:textColor="@color/text_heading"
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -569,7 +569,61 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="16dp"
-                android:background="#F1F5F9" />
+                android:background="@color/border_subtle" />
+
+            <!-- Dark Mode Toggle -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:background="@drawable/bg_icon_settings_circle">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_dark_mode"
+                        app:tint="@color/web_primary" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mode Tampilan"
+                        android:textColor="@color/text_heading"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvThemeStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mode Terang aktif"
+                        android:textColor="@color/text_hint_muted"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchDarkMode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    app:thumbTint="@color/web_primary"
+                    app:trackTint="@color/border_subtle" />
+            </LinearLayout>
 
             <!-- Job Alerts -->
             <LinearLayout
@@ -589,7 +643,7 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_notification_bell"
-                        app:tint="#3B82F6" />
+                        app:tint="@color/web_primary" />
                 </FrameLayout>
 
                 <LinearLayout
@@ -603,7 +657,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Notifikasi Lowongan"
-                        android:textColor="#1E293B"
+                        android:textColor="@color/text_heading"
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
@@ -611,7 +665,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Dapatkan info lowongan terbaru"
-                        android:textColor="#94A3B8"
+                        android:textColor="@color/text_hint_muted"
                         android:textSize="12sp" />
                 </LinearLayout>
 
@@ -620,8 +674,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
-                    app:thumbTint="#3B82F6"
-                    app:trackTint="#E2E8F0" />
+                    app:thumbTint="@color/web_primary"
+                    app:trackTint="@color/border_subtle" />
             </LinearLayout>
 
             <!-- Event Invites -->
@@ -642,7 +696,7 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_calendar_month"
-                        app:tint="#3B82F6" />
+                        app:tint="@color/web_primary" />
                 </FrameLayout>
 
                 <LinearLayout
@@ -656,7 +710,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Undangan Acara"
-                        android:textColor="#1E293B"
+                        android:textColor="@color/text_heading"
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
@@ -664,7 +718,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Reuni dan ajang networking"
-                        android:textColor="#94A3B8"
+                        android:textColor="@color/text_hint_muted"
                         android:textSize="12sp" />
                 </LinearLayout>
 
@@ -673,8 +727,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
-                    app:thumbTint="#3B82F6"
-                    app:trackTint="#E2E8F0" />
+                    app:thumbTint="@color/web_primary"
+                    app:trackTint="@color/border_subtle" />
             </LinearLayout>
 
             <!-- Privacy Settings -->
@@ -695,7 +749,7 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_lock"
-                        app:tint="#3B82F6" />
+                        app:tint="@color/web_primary" />
                 </FrameLayout>
 
                 <TextView
@@ -704,7 +758,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_weight="1"
                     android:text="Pengaturan Privasi"
-                    android:textColor="#1E293B"
+                    android:textColor="@color/text_heading"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -712,7 +766,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/ic_arrow_right"
-                    app:tint="#94A3B8" />
+                    app:tint="@color/text_hint_muted" />
             </LinearLayout>
 
             <!-- Activity History -->
@@ -733,7 +787,7 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_history"
-                        app:tint="#3B82F6" />
+                        app:tint="@color/web_primary" />
                 </FrameLayout>
 
                 <TextView
@@ -742,7 +796,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_weight="1"
                     android:text="Riwayat Aktivitas"
-                    android:textColor="#1E293B"
+                    android:textColor="@color/text_heading"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -750,32 +804,28 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/ic_arrow_right"
-                    app:tint="#94A3B8" />
+                    app:tint="@color/text_hint_muted" />
             </LinearLayout>
         </LinearLayout>
-
-        <!-- Footer -->
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnLogout"
+        
+        <!-- Logout Section -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/bg_btn_logout"
-            android:text="Keluar"
-            android:textAllCaps="false"
-            android:textColor="#EF4444"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
-            android:text="DARLI App Versi 2.4.0 (Build 302)"
-            android:textColor="#94A3B8"
-            android:textSize="11sp" />
+            android:layout_marginBottom="32dp"
+            android:background="@color/bg_card"
+            android:padding="24dp">
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnLogout"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_btn_secondary"
+                android:text="Keluar dari Akun"
+                android:textAllCaps="false"
+                android:textColor="@color/status_error"
+                android:textStyle="bold" />
+        </LinearLayout>
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

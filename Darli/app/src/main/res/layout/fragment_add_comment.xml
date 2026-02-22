@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/bg_surface"
     android:orientation="vertical">
 
     <!-- Header -->
@@ -49,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Bagaimana pengalaman Anda menggunakan aplikasi ini?"
-                android:textColor="#1F2937"
+                android:textColor="@color/text_heading"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="24dp"/>
@@ -58,7 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Rating Anda"
-                android:textColor="#4B5563"
+                android:textColor="@color/text_body_secondary"
                 android:textSize="14sp"
                 android:layout_marginBottom="8dp"/>
 
@@ -80,6 +80,9 @@
                 app:boxCornerRadiusTopEnd="12dp"
                 app:boxCornerRadiusBottomStart="12dp"
                 app:boxCornerRadiusBottomEnd="12dp"
+                android:textColorHint="@color/text_hint_muted"
+                app:hintTextColor="@color/web_primary"
+                app:boxStrokeColor="@color/web_primary"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -88,6 +91,7 @@
                     android:layout_height="wrap_content"
                     android:minLines="5"
                     android:gravity="top"
+                    android:textColor="@color/text_heading"
                     android:inputType="textMultiLine"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -99,6 +103,7 @@
                 android:text="Kirim Masukan"
                 android:textAllCaps="false"
                 android:textStyle="bold"
+                android:textColor="@color/white"
                 app:cornerRadius="12dp"
                 android:backgroundTint="@color/web_primary"/>
 

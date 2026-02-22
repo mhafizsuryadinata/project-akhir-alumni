@@ -4,14 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/background_light">
+    android:background="@color/bg_surface">
 
     <!-- Header -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:background="#FFFF">
+        android:background="@color/bg_card">
 
         <ImageView
             android:id="@+id/btnBack"
@@ -19,13 +19,13 @@
             android:layout_height="24dp"
             android:src="@drawable/ic_arrow_back"
             android:layout_centerVertical="true"
-            app:tint="@color/black"/>
+            app:tint="@color/text_heading"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Lamaran Saya"
-            android:textColor="@color/black"
+            android:textColor="@color/text_heading"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_centerInParent="true"/>
@@ -48,7 +48,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            android:indeterminateTint="@color/web_primary"/>
 
         <LinearLayout
             android:id="@+id/layoutEmpty"

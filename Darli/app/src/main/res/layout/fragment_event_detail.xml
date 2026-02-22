@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/bg_surface"
     android:fitsSystemWindows="true">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            app:contentScrim="@color/blue_primary"
+            app:contentScrim="@color/web_primary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:titleEnabled="false">
 
@@ -27,13 +27,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@color/gray_light"
+                android:src="@color/border_subtle"
                 app:layout_collapseMode="parallax" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#40000000"/>
+                android:background="@drawable/bg_gradient_black_overlay"/>
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -54,6 +54,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/bg_card"
             android:orientation="vertical"
             android:padding="24dp">
 
@@ -65,7 +66,7 @@
                 android:text="Event Title"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/text_heading"
                 android:layout_marginBottom="8dp"/>
 
             <!-- Category/Creator Chip -->
@@ -81,9 +82,9 @@
                     android:layout_height="wrap_content"
                     android:text="Oleh: Admin"
                     android:textSize="12sp"
-                    android:textColor="@color/text_secondary"
+                    android:textColor="@color/text_body_secondary"
                     android:background="@drawable/bg_chip_unselected"
-                    android:backgroundTint="#F5F5F5"
+                    android:backgroundTint="@color/bg_surface"
                     android:paddingHorizontal="12dp"
                     android:paddingVertical="6dp"/>
             </LinearLayout>
@@ -99,7 +100,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_calendar_month"
-                    app:tint="@color/blue_primary"
+                    app:tint="@color/web_primary"
                     android:layout_marginEnd="16dp"/>
 
                 <LinearLayout
@@ -114,7 +115,7 @@
                         android:text="15 September 2023"
                         android:textSize="14sp"
                         android:textStyle="bold"
-                        android:textColor="@color/black"/>
+                        android:textColor="@color/text_heading"/>
                     
                     <TextView
                         android:id="@+id/tvDetailTime"
@@ -122,7 +123,7 @@
                         android:layout_height="wrap_content"
                         android:text="08:00 - 12:00 WIB"
                         android:textSize="12sp"
-                        android:textColor="@color/text_secondary"/>
+                        android:textColor="@color/text_body_secondary"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -137,7 +138,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_location"
-                    app:tint="@color/blue_primary"
+                    app:tint="@color/web_primary"
                     android:layout_marginEnd="16dp"/>
 
                 <TextView
@@ -146,13 +147,13 @@
                     android:layout_height="wrap_content"
                     android:text="Lokasi Event"
                     android:textSize="14sp"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/text_heading"/>
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#EEEEEE"
+                android:background="@color/border_subtle"
                 android:layout_marginBottom="24dp"/>
 
             <!-- About Section -->
@@ -162,7 +163,7 @@
                 android:text="Tentang Acara"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/text_heading"
                 android:layout_marginBottom="12dp"/>
 
             <TextView
@@ -171,7 +172,7 @@
                 android:layout_height="wrap_content"
                 android:text="Deskripsi lengkap acara..."
                 android:textSize="14sp"
-                android:textColor="@color/text_secondary"
+                android:textColor="@color/text_body_secondary"
                 android:lineSpacingExtra="4dp"/>
             
             <!-- Bottom Padding for Floating Button space -->
@@ -188,7 +189,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@color/white"
+        android:background="@color/bg_card"
         android:elevation="8dp"
         android:padding="16dp"
         android:orientation="vertical">
@@ -202,7 +203,7 @@
             android:textStyle="bold"
             android:textAllCaps="false"
             app:cornerRadius="12dp"
-            android:backgroundTint="@color/blue_primary"
+            android:backgroundTint="@color/web_primary"
             android:insetTop="0dp"
             android:insetBottom="0dp"/>
     </LinearLayout>

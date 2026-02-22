@@ -3,23 +3,64 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="3dp"
-    app:cardBackgroundColor="@color/white">
+    android:layout_marginBottom="16dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@color/bg_card"
+    app:strokeColor="@color/border_subtle"
+    app:strokeWidth="1dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/ivInfoImage"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:scaleType="centerCrop"
-            android:src="@color/gray_light"
-            android:visibility="gone"/>
+            android:layout_height="200dp">
+
+            <ImageView
+                android:id="@+id/ivInfoImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/alumni3" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_hero_gradient" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tvInfoCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/web_primary"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="4dp"
+                    android:text="Pendidikan"
+                    android:textColor="@color/white"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvInfoTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Sistem Pendidikan Darul Funun"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,60 +68,31 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="8dp">
-
-                <TextView
-                    android:id="@+id/tvInfoType"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Pengumuman"
-                    android:textSize="12sp"
-                    android:paddingHorizontal="8dp"
-                    android:paddingVertical="4dp"
-                    android:background="@drawable/bg_badge_info"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"/>
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"/>
-
-                <TextView
-                    android:id="@+id/tvInfoDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="12 Jan 2024"
-                    android:textSize="12sp"
-                    android:textColor="@color/gray_dark"/>
-            </LinearLayout>
-
             <TextView
-                android:id="@+id/tvInfoTitle"
+                android:id="@+id/tvInfoDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Judul Informasi"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:layout_marginBottom="8dp"/>
-
-            <TextView
-                android:id="@+id/tvInfoContent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Isi konten informasi..."
-                android:textSize="14sp"
-                android:textColor="@color/text_secondary"
+                android:ellipsize="end"
                 android:maxLines="3"
-                android:ellipsize="end"/>
+                android:text="Darul Funun El-Abbasiyah memiliki sistem pendidikan terpadu yang menggabungkan nilai-nilai tradisional dan modern..."
+                android:textColor="@color/text_body_primary"
+                android:textSize="14sp"
+                android:lineSpacingExtra="4dp" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDetailInfo"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="8dp"
+                android:text="Baca Selengkapnya"
+                android:textAllCaps="false"
+                android:textColor="@color/web_primary"
+                android:textSize="13sp"
+                app:icon="@drawable/ic_arrow_right"
+                app:iconGravity="textEnd" />
         </LinearLayout>
-    </LinearLayout>
 
+    </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

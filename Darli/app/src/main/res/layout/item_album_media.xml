@@ -10,7 +10,8 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="4dp"
         app:cardElevation="0dp"
-        android:layout_margin="1dp">
+        android:layout_margin="1dp"
+        app:cardBackgroundColor="@color/bg_card">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -34,7 +35,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="@+id/aspectRatioHelper"
-                android:src="@drawable/bg_rounded_pill_white_alpha" />
+                android:src="@color/border_subtle" />
 
             <!-- Video Icon Overlay -->
             <ImageView
@@ -60,7 +61,7 @@
                 android:textSize="10sp"
                 android:textStyle="bold"
                 android:gravity="center"
-                android:background="#80000000"
+                android:background="@drawable/bg_gradient_black_overlay"
                 app:layout_constraintBottom_toBottomOf="@+id/aspectRatioHelper"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -73,7 +74,7 @@
                 android:layout_height="0dp"
                 android:src="@drawable/ic_check_circle"
                 app:tint="@color/white"
-                android:background="#804285F4"
+                android:background="@color/white_opacity_50"
                 android:padding="24dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F9FA">
+    android:background="@color/bg_surface">
 
     <!-- Header -->
     <LinearLayout
@@ -51,7 +51,7 @@
         android:layout_margin="24dp"
         android:text="Beri Masukan"
         android:textColor="@color/white"
-        app:icon="@drawable/ic_work"
+        app:icon="@drawable/ic_add"
         app:iconTint="@color/white"
         app:backgroundTint="@color/web_primary"/>
 
@@ -60,13 +60,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        android:indeterminateTint="@color/web_primary"/>
 
     <TextView
         android:id="@+id/tvEmpty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Belum ada komentar."
+        android:textColor="@color/text_body_secondary"
         android:layout_centerInParent="true"
         android:visibility="gone"/>
 

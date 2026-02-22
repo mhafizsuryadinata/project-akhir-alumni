@@ -62,7 +62,7 @@ class AddEventFragment : Fragment() {
         
         initViews(view)
         setupCategorySpinner()
-        setupListeners()
+        setupListeners(view)
         
         return view
     }
@@ -86,7 +86,11 @@ class AddEventFragment : Fragment() {
         spinnerCategory.adapter = adapter
     }
 
-    private fun setupListeners() {
+    private fun setupListeners(view: View) {
+        view.findViewById<ImageButton>(R.id.btnBack).setOnClickListener {
+            findNavController().popBackStack()
+        }
+
         etDate.setOnClickListener { showDatePicker() }
         etTime.setOnClickListener { showTimePicker() }
         

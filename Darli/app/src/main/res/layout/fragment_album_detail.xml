@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F9FB"
+    android:background="@color/bg_surface"
     tools:context=".AlbumDetailFragment">
 
     <LinearLayout
@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:background="@color/white"
+            android:background="@color/bg_card"
             android:elevation="2dp">
 
             <ImageButton
@@ -28,14 +28,14 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
-                app:tint="#1A202C" />
+                app:tint="@color/text_heading" />
 
             <TextView
                 android:id="@+id/tvAlbumName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Album Name"
-                android:textColor="#1A202C"
+                android:textColor="@color/text_heading"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:layout_toEndOf="@id/btnBack"
@@ -53,7 +53,7 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                app:tint="#1A202C" />
+                app:tint="@color/text_heading" />
         </RelativeLayout>
 
         <!-- Loading -->
@@ -63,7 +63,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="32dp"
-            android:visibility="gone" />
+            android:visibility="gone"
+            android:indeterminateTint="@color/web_primary"/>
 
         <!-- Empty State -->
         <LinearLayout
@@ -79,14 +80,14 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:src="@drawable/ic_gallery"
-                app:tint="#CCC" />
+                app:tint="@color/border_subtle" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Album ini masih kosong"
-                android:textColor="#888"
+                android:textColor="@color/text_body_secondary"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -111,6 +112,6 @@
         android:layout_margin="16dp"
         app:srcCompat="@drawable/ic_add"
         app:tint="@color/white"
-        app:backgroundTint="#4285F4" />
+        app:backgroundTint="@color/web_primary" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

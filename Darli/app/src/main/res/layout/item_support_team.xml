@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_marginEnd="16dp"
     android:layout_marginBottom="8dp"
+    app:cardBackgroundColor="@color/bg_card"
     app:cardCornerRadius="24dp"
     app:cardElevation="2dp">
 
@@ -21,7 +22,7 @@
             android:layout_height="70dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_profile_placeholder"
-            app:civ_border_color="#E0E7FF"
+            app:civ_border_color="@color/border_subtle"
             app:civ_border_width="2dp" />
 
         <TextView
@@ -32,7 +33,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:text="Nama Ustadz"
-            android:textColor="#111827"
+            android:textColor="@color/text_heading"
             android:textSize="14sp"
             android:textStyle="bold" />
 
@@ -43,7 +44,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:text="JABATAN"
-            android:textColor="#6B7280"
+            android:textColor="@color/text_body_secondary"
             android:textSize="10sp"
             android:textStyle="bold" />
 
@@ -59,10 +60,10 @@
                 android:layout_height="36dp"
                 android:layout_marginEnd="4dp"
                 android:layout_weight="1"
-                android:background="#ECFDF5"
+                android:background="@color/border_subtle"
                 android:src="@drawable/ic_chat"
                 android:contentDescription="WhatsApp"
-                app:tint="#059669" />
+                app:tint="@color/web_primary" />
 
             <ImageButton
                 android:id="@+id/btnEmail"
@@ -70,10 +71,10 @@
                 android:layout_height="36dp"
                 android:layout_marginStart="4dp"
                 android:layout_weight="1"
-                android:background="#EEF2FF"
+                android:background="@color/border_subtle"
                 android:src="@drawable/ic_email"
                 android:contentDescription="Email"
-                app:tint="#4F46E5" />
+                app:tint="@color/web_primary" />
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

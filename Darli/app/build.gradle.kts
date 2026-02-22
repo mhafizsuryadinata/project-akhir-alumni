@@ -45,6 +45,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.ui)
+    implementation(libs.androidx.gridlayout)
     
     // ViewPager2 for image carousel
     implementation("androidx.viewpager2:viewpager2:1.0.0")

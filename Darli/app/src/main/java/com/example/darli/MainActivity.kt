@@ -50,7 +50,25 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        bottomNavigationView.setupWithNavController(navController)
+        
+        // Custom navigation logic to reset tab state when switching
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            if (item.itemId != navController.currentDestination?.id) {
+                val navOptions = androidx.navigation.NavOptions.Builder()
+                    .setLaunchSingleTop(true)
+                    .setRestoreState(false)
+                    .setPopUpTo(navController.graph.startDestinationId, false, false)
+                    .build()
+                
+                navController.navigate(item.itemId, null, navOptions)
+            }
+            true
+        }
+
+        bottomNavigationView.setOnItemReselectedListener { item ->
+            // If already on the tab, pop back to the root of that tab
+            navController.popBackStack(item.itemId, false)
+        }
 
         if (sessionManager.isLoggedIn()) {
             showLoggedInState()
@@ -164,10 +182,6 @@ class MainActivity : AppCompatActivity() {
     private fun setupLoginButton() {
         val loginIntent = Intent(this, LoginActivity::class.java)
         findViewById<View>(R.id.btnJoinHero)?.setOnClickListener {
-            startActivity(loginIntent)
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-        }
-        findViewById<View>(R.id.btnJoinHeroBtn)?.setOnClickListener {
             startActivity(loginIntent)
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         }

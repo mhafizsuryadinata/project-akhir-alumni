@@ -34,7 +34,7 @@ class LowonganFragment : Fragment() {
     private lateinit var tvEmpty: TextView
     private lateinit var layoutError: LinearLayout
     private lateinit var btnBack: ImageView
-    private lateinit var fabAddLowongan: com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+    private lateinit var fabAddLowongan: com.google.android.material.floatingactionbutton.FloatingActionButton
     private lateinit var etSearch: EditText
     private lateinit var chipAll: TextView
     private lateinit var chipTech: TextView

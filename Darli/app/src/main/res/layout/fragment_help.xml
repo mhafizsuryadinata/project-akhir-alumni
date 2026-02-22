@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F8FAFF">
+    android:background="@color/bg_surface">
 
     <!-- Header (Matching Alumni Directory style) -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/bg_card"
         android:paddingHorizontal="16dp"
         android:paddingTop="12dp"
         android:paddingBottom="12dp"
@@ -24,7 +24,7 @@
             android:layout_centerVertical="true"
             android:src="@drawable/ic_arrow_back"
             android:padding="4dp"
-            app:tint="#1E293B"
+            app:tint="@color/text_heading"
             android:contentDescription="Kembali" />
 
         <LinearLayout
@@ -39,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Bantuan &amp; Kontak"
-                android:textColor="#1E293B"
+                android:textColor="@color/text_heading"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -47,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Pusat Bantuan Alumni"
-                android:textColor="#94A3B8"
+                android:textColor="@color/text_body_secondary"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -59,7 +59,7 @@
             android:layout_centerVertical="true"
             android:src="@drawable/ic_notification_bell"
             android:padding="4dp"
-            app:tint="#3B82F6"
+            app:tint="@color/web_primary"
             android:contentDescription="Notifikasi" />
     </RelativeLayout>
 
@@ -67,7 +67,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#E2E8F0" />
+        android:background="@color/border_subtle" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -93,7 +93,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Butuh Bantuan?"
-                    android:textColor="#111827"
+                    android:textColor="@color/text_heading"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
@@ -103,7 +103,7 @@
                     android:layout_marginTop="8dp"
                     android:lineSpacingExtra="4sp"
                     android:text="Kami siap membantu Anda jika ada pertanyaan atau kendala seputar aplikasi alumni DARLI."
-                    android:textColor="#4B5563"
+                    android:textColor="@color/text_body_primary"
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -121,7 +121,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_help_pill_light_blue"
+                    android:background="@color/border_subtle"
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:paddingVertical="10dp"
@@ -147,7 +147,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_help_pill_light_blue"
+                    android:background="@color/border_subtle"
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:paddingVertical="10dp"
@@ -177,7 +177,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="24dp"
-                app:cardBackgroundColor="@color/white"
+                app:cardBackgroundColor="@color/bg_card"
                 app:cardCornerRadius="24dp"
                 app:cardElevation="2dp">
 
@@ -190,7 +190,7 @@
                     <FrameLayout
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:background="@drawable/bg_help_pill_light_blue">
+                        android:background="@color/border_subtle">
 
                         <ImageView
                             android:layout_width="24dp"
@@ -210,7 +210,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Alamat"
-                            android:textColor="#111827"
+                            android:textColor="@color/text_heading"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
@@ -219,7 +219,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:text="Jl. Singa Harau No. 87, Balai Panjang, Payakumbuh Selatan, Kota Payakumbuh, Sumatera Barat"
-                            android:textColor="#6B7280"
+                            android:textColor="@color/text_body_secondary"
                             android:textSize="13sp" />
 
                     </LinearLayout>
@@ -239,7 +239,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="@color/white"
+                    app:cardBackgroundColor="@color/bg_card"
                     app:cardCornerRadius="24dp"
                     app:cardElevation="2dp">
 
@@ -252,7 +252,7 @@
                         <ImageView
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:background="@drawable/bg_help_pill_light_blue"
+                            android:background="@color/border_subtle"
                             android:padding="10dp"
                             android:src="@drawable/ic_clock"
                             app:tint="@color/web_primary" />
@@ -262,7 +262,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text="Jam Operasional"
-                            android:textColor="#111827"
+                            android:textColor="@color/text_heading"
                             android:textSize="14sp"
                             android:textStyle="bold" />
 
@@ -271,7 +271,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:text="Senin - Jumat: 08:00 - 17:00 WIB\nSabtu: 08:00 - 14:00 WIB"
-                            android:textColor="#6B7280"
+                            android:textColor="@color/text_body_secondary"
                             android:textSize="12sp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -281,7 +281,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="@color/white"
+                    app:cardBackgroundColor="@color/bg_card"
                     app:cardCornerRadius="24dp"
                     app:cardElevation="2dp">
 
@@ -294,17 +294,17 @@
                         <ImageView
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:background="#E0F2FE"
+                            android:background="@color/border_subtle"
                             android:padding="10dp"
                             android:src="@drawable/ic_email"
-                            app:tint="#0284C7" />
+                            app:tint="@color/web_primary" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text="Dukungan Email"
-                            android:textColor="#111827"
+                            android:textColor="@color/text_heading"
                             android:textSize="14sp"
                             android:textStyle="bold" />
 
@@ -313,7 +313,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:text="Respon dalam\n1x24 Jam"
-                            android:textColor="#6B7280"
+                            android:textColor="@color/text_body_secondary"
                             android:textSize="12sp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -336,7 +336,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Tim Dukungan"
-                        android:textColor="#111827"
+                        android:textColor="@color/text_heading"
                         android:textSize="18sp"
                         android:textStyle="bold" />
                 </RelativeLayout>
@@ -356,7 +356,7 @@
                     android:layout_marginTop="16dp"
                     android:gravity="center"
                     android:text="Belum ada data tim dukungan."
-                    android:textColor="#94A3B8"
+                    android:textColor="@color/text_hint_muted"
                     android:textSize="13sp"
                     android:visibility="gone" />
 
@@ -376,7 +376,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="32dp"
-                app:cardBackgroundColor="@color/white"
+                app:cardBackgroundColor="@color/bg_card"
                 app:cardCornerRadius="24dp"
                 app:cardElevation="4dp">
 
@@ -389,7 +389,7 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="4dp"
-                        android:background="@drawable/bg_gradient_blue" />
+                        android:background="@color/web_primary" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -415,7 +415,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="12dp"
                                 android:text="Kirim Pesan"
-                                android:textColor="#111827"
+                                android:textColor="@color/text_heading"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
@@ -438,7 +438,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="NAMA"
-                                    android:textColor="#374151"
+                                    android:textColor="@color/text_body_secondary"
                                     android:textSize="10sp"
                                     android:textStyle="bold" />
 
@@ -447,9 +447,11 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="48dp"
                                     android:layout_marginTop="4dp"
-                                    android:background="@drawable/bg_help_input"
+                                    android:background="@color/border_subtle"
                                     android:hint="Nama Anda"
                                     android:paddingHorizontal="12dp"
+                                    android:textColor="@color/text_heading"
+                                    android:textColorHint="@color/text_hint_muted"
                                     android:textSize="14sp" />
                             </LinearLayout>
 
@@ -464,7 +466,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="EMAIL"
-                                    android:textColor="#374151"
+                                    android:textColor="@color/text_body_secondary"
                                     android:textSize="10sp"
                                     android:textStyle="bold" />
 
@@ -473,9 +475,11 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="48dp"
                                     android:layout_marginTop="4dp"
-                                    android:background="@drawable/bg_help_input"
+                                    android:background="@color/border_subtle"
                                     android:hint="Email Anda"
                                     android:paddingHorizontal="12dp"
+                                    android:textColor="@color/text_heading"
+                                    android:textColorHint="@color/text_hint_muted"
                                     android:textSize="14sp" />
                             </LinearLayout>
                         </LinearLayout>
@@ -485,7 +489,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
                             android:text="SUBJEK"
-                            android:textColor="#374151"
+                            android:textColor="@color/text_body_secondary"
                             android:textSize="10sp"
                             android:textStyle="bold" />
 
@@ -493,7 +497,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
                             android:layout_marginTop="4dp"
-                            android:background="@drawable/bg_help_input"
+                            android:background="@color/border_subtle"
                             android:paddingHorizontal="12dp">
 
                             <Spinner
@@ -507,9 +511,9 @@
                                 android:layout_height="16dp"
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerVertical="true"
-                                android:src="@drawable/ic_chevron_right"
+                                android:src="@drawable/ic_arrow_right"
                                 android:rotation="90"
-                                app:tint="#6B7280" />
+                                app:tint="@color/text_hint_muted" />
                         </RelativeLayout>
 
                         <TextView
@@ -517,7 +521,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
                             android:text="PESAN"
-                            android:textColor="#374151"
+                            android:textColor="@color/text_body_secondary"
                             android:textSize="10sp"
                             android:textStyle="bold" />
 
@@ -526,10 +530,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="120dp"
                             android:layout_marginTop="4dp"
-                            android:background="@drawable/bg_help_input"
+                            android:background="@color/border_subtle"
                             android:gravity="top"
                             android:hint="Tuliskan detail kendala atau pertanyaan Anda..."
                             android:padding="12dp"
+                            android:textColor="@color/text_heading"
+                            android:textColorHint="@color/text_hint_muted"
                             android:textSize="14sp" />
 
                         <TextView
@@ -537,7 +543,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
                             android:text="LAMPIRAN"
-                            android:textColor="#374151"
+                            android:textColor="@color/text_body_secondary"
                             android:textSize="10sp"
                             android:textStyle="bold" />
 
@@ -546,7 +552,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:background="@drawable/bg_dashed_border"
+                            android:background="@color/border_subtle"
                             android:gravity="center"
                             android:orientation="horizontal"
                             android:padding="16dp">
@@ -556,7 +562,7 @@
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:src="@drawable/ic_gallery"
-                                app:tint="#94A3B8" />
+                                app:tint="@color/text_hint_muted" />
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -569,7 +575,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Upload Screenshot"
-                                    android:textColor="#334155"
+                                    android:textColor="@color/text_heading"
                                     android:textSize="14sp"
                                     android:textStyle="bold" />
 
@@ -578,7 +584,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Maks 5MB (JPG, PNG, PDF, DOCX)"
-                                    android:textColor="#94A3B8"
+                                    android:textColor="@color/text_hint_muted"
                                     android:textSize="12sp" />
                             </LinearLayout>
                         </LinearLayout>
@@ -592,7 +598,8 @@
                             android:textAllCaps="false"
                             android:textSize="16sp"
                             android:textStyle="bold"
-                            app:backgroundTint="@color/web_secondary"
+                            android:textColor="@color/white"
+                            app:backgroundTint="@color/web_primary"
                             app:cornerRadius="12dp" />
 
                     </LinearLayout>
@@ -610,7 +617,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Riwayat Pesan"
-                    android:textColor="#111827"
+                    android:textColor="@color/text_heading"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -620,7 +627,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/bg_help_pill_light_blue"
+                    android:background="@color/border_subtle"
                     android:paddingHorizontal="10dp"
                     android:paddingVertical="4dp"
                     android:text="0 Pesan"
@@ -644,7 +651,7 @@
                 android:layout_marginTop="16dp"
                 android:gravity="center"
                 android:text="Anda belum pernah mengirim pesan."
-                android:textColor="#94A3B8"
+                android:textColor="@color/text_hint_muted"
                 android:textSize="13sp"
                 android:visibility="gone" />
 
@@ -666,7 +673,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Pertanyaan Umum (FAQ)"
-                    android:textColor="#111827"
+                    android:textColor="@color/text_heading"
                     android:textSize="18sp"
                     android:textStyle="bold" />
             </RelativeLayout>
@@ -686,7 +693,7 @@
                 android:layout_marginTop="16dp"
                 android:gravity="center"
                 android:text="Belum ada FAQ yang tersedia."
-                android:textColor="#94A3B8"
+                android:textColor="@color/text_hint_muted"
                 android:textSize="13sp"
                 android:visibility="gone" />
 
